@@ -1,0 +1,52 @@
+<odoo>
+    <record id="view_move_form_inherited_sales_man" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//group//group[@id='header_left_group']//div" position="after">
+                <!-- <field name="move_type"> -->
+                <!--field name="sales_man_id" invisible="move_type == 'entry'" required="move_type == 'out_invoice'" readonly="state != 'draft'" /-->
+                <field name="sales_man_id" invisible="move_type not in  ['out_invoice', 'out_refund']" required="is_agent_required == True and move_type in  ['out_invoice', 'out_refund']" readonly="state != 'draft'"/>
+                <field name="supervisor_id" invisible="move_type not in  ['out_invoice', 'out_refund']" force_save="1" readonly="1"/>
+
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record id="view_invoice_tree_salesman" model="ir.ui.view">
+        <field name="name">account.out.invoice.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='date']" position="before">
+                <field name="sales_man_id" column_invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund')"/>
+                <field name="supervisor_id" column_invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund')"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_invoice_agent_filter" model="ir.ui.view">
+        <field name="name">account.move.search.agent</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="sales_man_id"/>
+                <field name="supervisor_id"/>
+            </field>
+            <xpath expr="//filter[@name='status']" position="before">
+                <filter string="Agent" name="Agent" domain="[]" context="{'group_by': 'sales_man_id'}"/>
+                <filter string="Supervisor" name="supervisor_id" domain="[]" context="{'group_by': 'supervisor_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="account.res_partner_agent_menu_ag" parent="account.menu_finance_receivables" name="Agents"
+              sequence="400" action="dwave_agent_salesman.action_agent_form"/>
+
+</odoo>

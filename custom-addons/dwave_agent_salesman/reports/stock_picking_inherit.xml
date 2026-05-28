@@ -1,0 +1,21 @@
+<odoo>
+    <template id="report_delivery_document_inherit_customer_info" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='div_sched_date']" position="after">
+            <div class="row mt32 mb32">
+
+                <div t-if="o.sale_id.partner_id" class="col col-3 mw-100 mb-2" name="div_customer_name">
+                    <strong>Customer</strong>
+                    <div class="m-0" t-field="o.sale_id.partner_id.name"/>
+                </div>
+                <div t-if="o.sale_id.partner_id" class="col col-3 mw-100 mb-2" name="div_customer_phone">
+                    <strong>Phone</strong>
+                    <div class="m-0" t-esc="o.sale_id.partner_id.phone or '—'"/>
+                </div>
+                <div t-if="o.sales_man_id" class="col col-3 mw-100 mb-2" name="div_sales_man">
+                    <strong>Sales Man</strong>
+                    <div class="m-0" t-esc="o.sales_man_id.name"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

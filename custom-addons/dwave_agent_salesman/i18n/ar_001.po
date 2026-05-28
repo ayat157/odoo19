@@ -1,0 +1,174 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dwave_agent_salesman
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-21 12:23+0000\n"
+"PO-Revision-Date: 2025-09-21 12:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_res_partner__agent_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_res_users__agent_id
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_invoice_agent_filter
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_partner_form_agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_res_partner_filter_inherit_agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_sales_order_filter
+msgid "Agent"
+msgstr "المندوب"
+
+#. module: dwave_agent_salesman
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.res_partner_view_search
+msgid "Agent Partners"
+msgstr "شركاء الوكلاء"
+
+#. module: dwave_agent_salesman
+#: model:ir.actions.act_window,name:dwave_agent_salesman.action_agent_form
+#: model:ir.ui.menu,name:dwave_agent_salesman.menu_agent_form
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.res_partner_view_search
+msgid "Agents"
+msgstr "مناديب"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,help:dwave_agent_salesman.field_res_partner__agent
+#: model:ir.model.fields,help:dwave_agent_salesman.field_res_users__agent
+msgid "Check this field if the partner is an agent."
+msgstr "حدد هذا الحقل إذا كان الشريك وكيلاً."
+
+#. module: dwave_agent_salesman
+#: model:ir.model,name:dwave_agent_salesman.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: dwave_agent_salesman
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_order_form_inherited_sales_man
+msgid "Create Invoice"
+msgstr "إنشاء فاتورة"
+
+#. module: dwave_agent_salesman
+#: model_terms:ir.actions.act_window,help:dwave_agent_salesman.res_partner_action_customer_sale
+msgid "Create a new customer in your address book"
+msgstr "أنشئ عميلًا جديدًا في دفتر العناوين الخاص بك"
+
+#. module: dwave_agent_salesman
+#: model:ir.actions.act_window,name:dwave_agent_salesman.res_partner_action_customer_sale
+msgid "Customers"
+msgstr "العملاء"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_res_partner__agent
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_res_users__agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_partner_form_agent
+msgid "Is Agent"
+msgstr "هل هو مندوب مبيعات؟"
+
+#. module: dwave_agent_salesman
+#: model:ir.model,name:dwave_agent_salesman.model_account_move
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: dwave_agent_salesman
+#: model_terms:ir.actions.act_window,help:dwave_agent_salesman.res_partner_action_customer_sale
+msgid "Odoo helps you easily track all activities related to a customer."
+msgstr "يساعدك أودو على تتبع جميع الأنشطة المتعلقة بالعميل بسهولة."
+
+#. module: dwave_agent_salesman
+#: model:ir.model,name:dwave_agent_salesman.model_account_payment
+msgid "Payments"
+msgstr "المدفوعات"
+
+#. module: dwave_agent_salesman
+#: model:ir.model,name:dwave_agent_salesman.model_account_payment_register
+msgid "Register Payment"
+msgstr "تسجيل دفعة"
+
+#. module: dwave_agent_salesman
+#. odoo-python
+#: code:addons/dwave_agent_salesman/models/account_move.py:0
+#: code:addons/dwave_agent_salesman/models/account_payment.py:0
+#: code:addons/dwave_agent_salesman/models/sale_order.py:0
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_account_bank_statement_line__sales_man_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_account_move__sales_man_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_account_payment__sales_man_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_sale_order__sales_man_id
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_account_payment_search
+msgid "Sales Man"
+msgstr "مندوب مبيعات"
+
+#. module: dwave_agent_salesman
+#: model:ir.model,name:dwave_agent_salesman.model_sale_order
+msgid "Sales Order"
+msgstr "أمر المبيعات"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,help:dwave_agent_salesman.field_res_partner__agent_id
+#: model:ir.model.fields,help:dwave_agent_salesman.field_res_users__agent_id
+msgid ""
+"Select an agent for this customer. Only partners marked as agents can be "
+"selected."
+msgstr "اختر وكيلاً لهذا العميل. يمكن اختيار الشركاء المحددين كوكلاء فقط."
+
+#. module: dwave_agent_salesman
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_sales_order_filter
+msgid "agent"
+msgstr "مندوب مبيعات"
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_account_invoice_report__manager_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_purchase_report__manager_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_sale_report__manager_id
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_account_invoice_report_search_inherit_agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_purchase_order_search_inherit_agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_sale_report_search_inherit_agent
+msgid "Manager"
+msgstr "المدير"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_account_invoice_report__supervisor_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_purchase_report__supervisor_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_sale_report__supervisor_id
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_account_invoice_report_search_inherit_agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_purchase_order_search_inherit_agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_sale_report_search_inherit_agent
+msgid "Supervisor"
+msgstr "المشرف"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_purchase_report__payment_term_id
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_sale_report__payment_term_id
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_purchase_order_search_inherit_agent
+#: model_terms:ir.ui.view,arch_db:dwave_agent_salesman.view_sale_report_search_inherit_agent
+msgid "Payment Terms"
+msgstr "شروط الدفع"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_purchase_report__weight_received
+msgid "Weight Received"
+msgstr "الوزن المستلم"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_purchase_report__weight_billed
+msgid "Weight Billed"
+msgstr "الوزن المفوتر"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_account_invoice_report__weight_invoiced
+msgid "Weight (Kg)"
+msgstr "الوزن (كجم)"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_sale_report__weight_delivered
+msgid "Weight Delivered"
+msgstr "الوزن المسلم"
+
+#. module: dwave_agent_salesman
+#: model:ir.model.fields,field_description:dwave_agent_salesman.field_sale_report__weight_invoiced
+msgid "Weight Invoiced"
+msgstr "الوزن المفوتر"

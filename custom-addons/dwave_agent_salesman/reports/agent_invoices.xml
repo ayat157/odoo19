@@ -1,0 +1,165 @@
+<odoo>
+    <data>
+
+        <!-- Report Action -->
+        <record id="agent_invoices_id" model="ir.actions.report">
+            <field name="name">Agent Invoices</field>
+            <field name="model">agent.invoices.wiz</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">dwave_agent_salesman.report_agent_invoices_template</field>
+            <field name="report_file">dwave_agent_salesman.report_agent_invoices_template</field>
+            <field name="print_report_name">"Agent_invoice.pdf"</field>
+        </record>
+
+        <!-- QWeb Report Template -->
+        <template id="report_agent_invoices_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+
+                    <!-- ✅ Custom inline CSS (safe for wkhtmltopdf) -->
+                    <style>
+                        body {
+                            font-family: "DejaVu Sans", sans-serif;
+                            font-size: 12px;
+                            color: #333;
+                        }
+                        .page {
+                            padding: 20px;
+                            background-color: #fff;
+                        }
+                        h4 {
+                            text-align: center;
+                            background-color: #0B3954;
+                            color: white;
+                            padding: 8px;
+                            border-radius: 4px;
+                            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                            margin-bottom: 15px;
+                        }
+                        h6 {
+                            text-align: center;
+                            color: #444;
+                            margin-bottom: 25px;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-bottom: 20px;
+                            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+                            border-radius: 6px;
+                            overflow: hidden;
+                        }
+                        th {
+                            background-color: #E8F0F8;
+                            font-weight: bold;
+                            border: 1px solid #ccc;
+                            padding: 6px;
+                            color: #222;
+                            text-align: center;
+                        }
+                        td {
+                            border: 1px solid #ccc;
+                            padding: 5px;
+                            text-align: center;
+                        }
+                        tr:nth-child(even) {
+                            background-color: #F9FBFD;
+                        }
+                        tr:hover td {
+                            background-color: #F1FAFF;
+                        }
+                        .total-row {
+                            background-color: #0B3954;
+                            color: #fff;
+                            font-weight: bold;
+                        }
+                        .summary {
+                            text-align: right;
+                            border-top: 2px solid #0B3954;
+                            padding-top: 10px;
+                            margin-top: 20px;
+                            font-size: 13px;
+                        }
+                        .date-header {
+                            text-align: center;
+                            margin-bottom: 15px;
+                        }
+                        .spacer {
+                            display: inline-block;
+                            width: 30px;
+                        }
+                    </style>
+
+                    <!-- 🌟 Report Body -->
+                    <div class="page">
+                        <h4>Invoices Report</h4>
+
+                        <div class="date-header">
+                            <strong>From Date:</strong>
+                            <t t-esc="data.get('from_date')"/>
+                            <span class="spacer"></span>
+                            <strong>To Date:</strong>
+                            <t t-esc="data.get('to_date')"/>
+                        </div>
+
+                        <t t-foreach="docs" t-as="d">
+                            <b><t t-esc="d.get('agent')"/></b>
+                            <t t-foreach="d.get('data')" t-as="c">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="6"><t t-esc="c.get('customer')"/></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Customer</th>
+                                            <th>Invoice No</th>
+                                            <th>Invoice Date</th>
+                                            <th>Invoice Amount</th>
+                                            <th>Amount Paid</th>
+                                            <th>Balance</th>
+                                        </tr>
+                                        <t t-foreach="c.get('invoices')" t-as="k">
+                                            <tr>
+                                                <td><t t-esc="k.partner_id.name"/></td>
+                                                <td><t t-esc="k.name"/></td>
+                                                <td><t t-esc="k.invoice_date"/></td>
+                                                <td><t t-esc="k.amount_total" t-options='{"widget": "float", "precision": 3}'/></td>
+                                                <t t-set="paid" t-value="k.amount_total - k.amount_residual"/>
+                                                <td><t t-esc="paid" t-options='{"widget": "float", "precision": 3}'/></td>
+                                                <td><t t-esc="k.amount_residual" t-options='{"widget": "float", "precision": 3}'/></td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="total-row">
+                                            <td colspan="3">Total</td>
+                                            <td><t t-esc="c.get('balance')" t-options='{"widget": "float", "precision": 3}'/></td>
+                                            <t t-set="paid_total" t-value="c.get('balance') - c.get('invoice')"/>
+                                            <td><t t-esc="paid_total" t-options='{"widget": "float", "precision": 3}'/></td>
+                                            <td><t t-esc="c.get('invoice')" t-options='{"widget": "float", "precision": 3}'/></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </t>
+                        </t>
+
+                        <div class="summary">
+                            <strong>Total Invoice:</strong>
+                            <t t-esc="total_balance" t-options='{"widget": "float", "precision": 3}'/>
+                            <span class="spacer"></span>
+                            <strong>Total Paid:</strong>
+                            <t t-set="total_paid" t-value="total_balance - total_invoice"/>
+                            <t t-esc="total_paid" t-options='{"widget": "float", "precision": 3}'/>
+                            <span class="spacer"></span>
+                            <strong>Total Balance:</strong>
+                            <t t-esc="total_invoice" t-options='{"widget": "float", "precision": 3}'/>
+                        </div>
+                    </div>
+
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

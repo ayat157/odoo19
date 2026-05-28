@@ -1,0 +1,10 @@
+<odoo>
+    <template id="report_picking_inherit_salesman" inherit_id="stock.report_picking">
+        <xpath expr="//div[contains(@class, 'o_report_stockpicking_operations')]" position="inside">
+            <div class="mb-3">
+                <strong>Salesman:</strong>
+                <span t-field="o.sales_man_id.name" />
+            </div>
+        </xpath>
+    </template>
+</odoo>

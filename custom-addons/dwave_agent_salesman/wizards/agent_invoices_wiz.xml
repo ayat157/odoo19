@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Wizard View -->
+    <record id="view_agent_invoices_print" model="ir.ui.view">
+        <field name="name">Agent Invoices Print</field>
+        <field name="model">agent.invoices.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Agent Invoices">
+                <group>
+                    <group>
+                        <field name="from_date" />
+                        <field name="to_date"/>
+                        <field name="agent_ids" required="1" widget="many2many_tags" options="{'no_create':True, 'no_edit':True}"/>
+                        <field name="customer_ids" widget="many2many_tags" options="{'no_create':True, 'no_edit':True}"/>
+                    </group>
+                    <group string="Filter Option">
+                        <field name="show_unpaid_only"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_agent_invoices_print" model="ir.actions.act_window">
+        <field name="name">Agent Invoices</field>
+        <field name="res_model">agent.invoices.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_agent_invoices_print"/>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_agent_invoices_print"
+              name="Agent Invoices"
+              parent="account.menu_finance_reports"
+              sequence="3"
+              action="action_agent_invoices_print"/>
+    <menuitem id="menu_agent_invoices_print_vendor"
+              name="Agent Invoices"
+              parent="account.menu_finance_receivables"
+              sequence="500"
+              action="action_agent_invoices_print"/>
+    <menuitem id="menu_agent_invoices_print_customer"
+              name="Agent Invoices"
+              parent="account.menu_finance_receivables"
+              sequence="60"
+              action="action_agent_invoices_print"/>
+    <menuitem id="menu_agent_invoices_print_customer"
+              name="Agent Invoices"
+              parent="sale.menu_sale_report"
+              sequence="60"
+              action="action_agent_invoices_print"/>
+</odoo>

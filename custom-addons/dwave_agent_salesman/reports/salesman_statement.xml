@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_salesman_statement_en" model="ir.actions.report">
+            <field name="name">Salesman Customer Statement (EN)</field>
+            <field name="model">salesman.statement.wiz</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">dwave_agent_salesman.statement_template_en</field>
+            <field name="report_file">dwave_agent_salesman.statement_template_en</field>
+            <field name="print_report_name">'Salesman Statement - %s' % (object.salesman_id.name)</field>
+        </record>
+
+        <record id="action_report_salesman_statement_ar" model="ir.actions.report">
+            <field name="name">Salesman Customer Statement (AR)</field>
+            <field name="model">salesman.statement.wiz</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">dwave_agent_salesman.statement_template_ar</field>
+            <field name="report_file">dwave_agent_salesman.statement_template_ar</field>
+            <field name="print_report_name">'كشف حساب المندوب - %s' % (object.salesman_id.name)</field>
+        </record>
+
+
+        <template id="statement_template_en">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    
+                    <style type="text/css">
+                        .page { font-family: Arial, "DejaVu Sans", sans-serif; font-size: 12px; color: #333; }
+                        .logo-container { text-align: right; margin-bottom: 15px; }
+                        .logo-container img { max-height: 80px; max-width: 200px; }
+                        .report-title { text-align: center; background-color: #0B3954; color: white; padding: 12px; border-radius: 5px; margin-bottom: 25px; font-size: 19px; font-weight: bold; }
+                        .header-grid { display: -webkit-box; display: flex; -webkit-box-pack: justify; justify-content: space-between; font-size: 13px; margin-bottom: 25px; padding: 15px; background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 5px; }
+                        .header-grid .header-block { width: 48%; }
+                        .header-grid .header-line { display: -webkit-box; display: flex; -webkit-box-pack: justify; justify-content: space-between; padding: 3px 0; }
+                        .header-grid .header-line strong { color: #0B3954; font-weight: bold; white-space: nowrap; padding-right: 10px; }
+                        .header-grid .header-line span { text-align: right; color: #555; }
+                        .statement-table { width: 100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+                        .statement-table th { background-color: #E8F0F8; font-weight: bold; border: 1px solid #ccc; padding: 8px; color: #222; text-align: center; vertical-align: middle; }
+                        .statement-table td { border: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: middle; }
+                        .statement-table tbody tr:nth-child(even) { background-color: #F9FBFD; }
+                        .statement-table .number { text-align: right; }
+                        .statement-table tfoot tr { background-color: #0B3954; color: #fff; font-weight: bold; font-size: 13px; }
+                        .statement-table tfoot td { border: 1px solid #0B3954; color: #fff; padding: 10px 8px; }
+                    </style>
+
+                    <div class="page">
+                        <div class="logo-container">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Company Logo"/>
+                        </div>
+                        
+                        <div class="report-title">
+                            Salesman Customer Statement <t t-if="currency">(<t t-esc="currency.name"/>)</t>
+                        </div>
+                        
+                        <div class="header-grid">
+                            <div class="header-block">
+                                <div class="header-line">
+                                    <strong>Salesman:</strong>
+                                    <span><t t-esc="salesman.name"/> (<t t-esc="salesman.id"/>)</span>
+                                </div>
+                                <div class="header-line">
+                                    <strong>Company:</strong>
+                                    <span><t t-esc="company.name"/></span>
+                                </div>
+                            </div>
+                            <div class="header-block">
+                                <div class="header-line">
+                                    <strong>From Date:</strong>
+                                    <span><t t-esc="date_from" t-options='{"widget": "date"}'/></span>
+                                </div>
+                                <div class="header-line">
+                                    <strong>To Date:</strong>
+                                    <span><t t-esc="date_to" t-options='{"widget": "date"}'/></span>
+                                </div>
+                                <div class="header-line">
+                                    <strong>Print User:</strong>
+                                    <span><t t-esc="user.name"/></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm statement-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" style="width: 30%; vertical-align: middle; text-align: center;">Customer Account</th>
+                                    
+                                    <th rowspan="2" style="width: 15%; vertical-align: middle;">Opening Balance</th>
+                                    
+                                    <th colspan="2" style="width: 40%;">Period Movement</th>
+                                    
+                                    <th rowspan="2" style="width: 15%; vertical-align: middle;">Ending Balance</th>
+                                </tr>
+                                <tr>
+                                    <th class="number">Debit</th>
+                                    <th class="number">Credit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="lines" t-as="line">
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span t-esc="line['partner_code']"/> - <span t-esc="line['partner_name']"/>
+                                        </td>
+                                        
+                                        <td class="number">
+                                            <t t-if="line['open_net'] != 0">
+                                                <span t-esc="line['open_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                            </t>
+                                        </td>
+
+                                        <td class="number"><span t-esc="line['debit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="number"><span t-esc="line['credit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+
+                                        <td class="number">
+                                            <t t-if="line['end_net'] != 0">
+                                                <span t-esc="line['end_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td style="text-align: center;"><strong>Salesman Total</strong></td>
+                                    
+                                    <td class="number">
+                                        <span t-esc="totals['open_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    
+                                    <td class="number"><span t-esc="totals['debit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="number"><span t-esc="totals['credit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    
+                                    <td class="number">
+                                        <span t-esc="totals['end_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="statement_template_ar">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    
+                    <style type="text/css">
+                        @font-face {
+                            font-family: 'Noto Naskh Arabic';
+                            src: url('/dwave_agent_salesman/static/src/fonts/NotoNaskhArabic-Regular.ttf') format('truetype');
+                            font-weight: normal;
+                        }
+                        @font-face {
+                            font-family: 'Noto Naskh Arabic';
+                            src: url('/dwave_agent_salesman/static/src/fonts/NotoNaskhArabic-Bold.ttf') format('truetype');
+                            font-weight: bold;
+                        }
+
+                        body, .page, th, td, span, strong, div {
+                            font-family: "Noto Naskh Arabic", "DejaVu Sans", tahoma, sans-serif !important;
+                        }
+                        .page { font-size: 12px; color: #333; direction: rtl; text-align: right; }
+
+                        .logo-container { text-align: left; margin-bottom: 15px; }
+                        .logo-container img { max-height: 80px; max-width: 200px; }
+
+                        .report-title {
+                            text-align: center;
+                            background-color: #0B3954;
+                            color: white;
+                            padding: 12px;
+                            border-radius: 5px;
+                            margin-bottom: 25px;
+                            font-size: 19px;
+                            font-weight: bold;
+                        }
+
+                        .header-grid {
+                            display: flex;
+                            justify-content: space-between;
+                            flex-direction: row-reverse; 
+                            gap: 30px;
+                            font-size: 13px;
+                            margin-bottom: 25px;
+                            padding: 15px;
+                            background-color: #f8f9fa;
+                            border: 1px solid #dee2e6;
+                            border-radius: 5px;
+                        }
+
+                        .header-grid .header-block {
+                            width: 48%;
+                        }
+
+                        .header-grid .header-line {
+                            display: flex;
+                            flex-direction: row-reverse;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding: 4px 0;
+                            text-align: right;
+                            direction: rtl;
+                        }
+
+                        .header-grid .header-line strong {
+                            color: #0B3954;
+                            font-weight: bold;
+                            min-width: 90px;
+                            white-space: nowrap;
+                            margin-left: 10px;
+                        }
+
+                        .header-grid .header-line span {
+                            color: #444;
+                            flex: 1;
+                            text-align: right;
+                            direction: rtl;
+                            word-wrap: break-word;
+                        }
+
+                        .statement-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 20px;
+                            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                            direction: rtl;
+                        }
+                        .statement-table th {
+                            background-color: #E8F0F8;
+                            font-weight: bold;
+                            border: 1px solid #ccc;
+                            padding: 8px;
+                            color: #222;
+                            text-align: center;
+                            vertical-align: middle;
+                        }
+                        .statement-table td {
+                            border: 1px solid #ddd;
+                            padding: 8px;
+                            vertical-align: middle;
+                            text-align: right;
+                        }
+                        .statement-table tbody tr:nth-child(even) { background-color: #F9FBFD; }
+                        .statement-table .number { text-align: left; }
+
+                        .statement-table tfoot tr {
+                            background-color: #0B3954;
+                            color: #fff;
+                            font-weight: bold;
+                            font-size: 13px;
+                        }
+                        .statement-table tfoot td {
+                            border: 1px solid #0B3954;
+                            color: #fff;
+                            padding: 10px 8px;
+                        }
+                    </style>
+
+
+                    <div class="page" dir="rtl">
+                        <div class="logo-container">
+                            <t t-set="company" t-value="res_company"/>
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Company Logo"/>
+                        </div>
+                        
+                        <div class="report-title">
+                            كشف حساب المندوب <t t-if="currency">(<t t-esc="currency.name"/>)</t>
+                        </div>
+                        
+                        <div class="header-grid">
+                            <div class="header-block">
+                                <div class="header-line">
+                                    <strong>المندوب:</strong>
+                                    <span><t t-esc="salesman.name"/> (<t t-esc="salesman.id"/>)</span>
+                                </div>
+                                <div class="header-line">
+                                    <strong>الشركة:</strong>
+                                    <span><t t-esc="company.name"/></span>
+                                </div>
+                            </div>
+                            <div class="header-block">
+                                <div class="header-line">
+                                    <strong>من تاريخ:</strong>
+                                    <span><t t-esc="date_from" t-options='{"widget": "date"}'/></span>
+                                </div>
+                                <div class="header-line">
+                                    <strong>إلى تاريخ:</strong>
+                                    <span><t t-esc="date_to" t-options='{"widget": "date"}'/></span>
+                                </div>
+                                <div class="header-line">
+                                    <strong>المستخدم:</strong>
+                                    <span><t t-esc="user.name"/></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table class="table table-sm statement-table">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" style="width: 30%; vertical-align: middle; text-align: center;">حساب العميل</th>
+                                    
+                                    <th rowspan="2" style="width: 15%;">الرصيد الافتتاحي</th>
+                                    
+                                    <th colspan="2" style="width: 40%;">حركة الفترة</th>
+                                    
+                                    <th rowspan="2" style="width: 15%;">الرصيد الختامي</th>
+                                </tr>
+                                <tr>
+                                    <th class="number">مدين</th>
+                                    <th class="number">دائن</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="lines" t-as="line">
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle;">
+                                            <span t-esc="line['partner_code']"/> - <span t-esc="line['partner_name']"/>
+                                        </td>
+                                        
+                                        <td class="number">
+                                            <t t-if="line['open_net'] != 0">
+                                                <span t-esc="line['open_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                            </t>
+                                        </td>
+
+                                        <td class="number"><span t-esc="line['debit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                        <td class="number"><span t-esc="line['credit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+
+                                        <td class="number">
+                                            <t t-if="line['end_net'] != 0">
+                                                <span t-esc="line['end_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td style="text-align: center;"><strong>إجمالي المندوب</strong></td>
+                                    
+                                    <td class="number">
+                                        <span t-esc="totals['open_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                    
+                                    <td class="number"><span t-esc="totals['debit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    <td class="number"><span t-esc="totals['credit_move']" t-options='{"widget": "float", "precision": 2}'/></td>
+                                    
+                                    <td class="number">
+                                        <span t-esc="totals['end_net']" t-options='{"widget": "float", "precision": 2}'/>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_agent_stock_picking_form" model="ir.ui.view">
+            <field name="name">view.inherit.stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="sales_man_id" required="is_agent_required == True"
+                           readonly="state != 'draft'"/>
+                    <field name="supervisor_id" force_save="1" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+
+<!--        <record id="view_stock.picking_agent_tree" model="ir.ui.view">-->
+<!--            <field name="name">view.stock.picking.agent.tree</field>-->
+<!--            <field name="model">stock.picking</field>-->
+<!--            <field name="inherit_id" ref="stock.vpicktree"/>-->
+<!--            <field name="arch" type="xml">-->
+
+<!--                <xpath expr="//field[@name='origin']" position="after">-->
+<!--                    <field name="sales_man_id"/>-->
+<!--                    <field name="supervisor_id" force_save="1" readonly="1"/>-->
+<!--                </xpath>-->
+
+<!--            </field>-->
+<!--        </record>-->
+
+
+        <record id="view_picking_agent_filter" model="ir.ui.view">
+            <field name="name">stock.picking.search.agent</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="sales_man_id"/>
+                    <field name="supervisor_id"/>
+                </field>
+                <xpath expr="//filter[@name='status']" position="before">
+                    <filter string="Agent" name="Agent" domain="[]" context="{'group_by': 'sales_man_id'}"/>
+                    <filter string="Supervisor" name="supervisor_id" domain="[]"
+                            context="{'group_by': 'supervisor_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

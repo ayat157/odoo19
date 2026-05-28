@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_product_search_inherit_agent" model="ir.ui.view">
+        <field name="name">sale.report.search.inherit.agent</field>
+        <field name="model">sale.report</field>
+        <field name="inherit_id" ref="sale.view_order_product_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='User']" position="after">
+                <separator/>
+                <filter string="Manager" name="manager" context="{'group_by': 'manager_id'}"/>
+                <filter string="Supervisor" name="supervisor" context="{'group_by': 'supervisor_id'}"/>
+                <filter string="Agent" name="agent" context="{'group_by': 'sales_man_id'}"/>
+                <separator/>
+                <filter string="Payment Terms" name="payment_term" context="{'group_by': 'payment_term_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

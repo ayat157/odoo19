@@ -1,0 +1,128 @@
+<odoo>
+
+    <record id="view_order_form_inherited_sales_man" model="ir.ui.view">
+        <field name="name">sale.order.only.form.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="priority">2</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+
+        <field name="arch" type="xml">
+
+            <!-- Create Invoice Button -->
+            <xpath expr="//button[@id='create_invoice']" position="replace">
+                <button
+                    id="create_invoice"
+                    name="action_confirm"
+                    string="Create Invoice"
+                    type="object"
+                    class="btn-primary"
+                    data-hotkey="q"
+                    invisible="invoice_status != 'to invoice'"
+                />
+            </xpath>
+
+            <!-- Percentage Invoice Button -->
+            <xpath expr="//button[@id='create_invoice_percentage']" position="replace">
+                <button
+                    id="create_invoice_percentage"
+                    name="action_confirm"
+                    string="Create Invoice"
+                    type="object"
+                    class="btn-primary"
+                    context="{'default_advance_payment_method': 'percentage'}"
+                    data-hotkey="q"
+                    invisible="invoice_status != 'no' or state != 'sale'"
+                />
+            </xpath>
+
+            <!-- Extra Fields -->
+            <xpath expr="//group[@name='partner_details']//field[@name='partner_id']" position="after">
+
+                <field
+                    name="sales_man_id"
+                    readonly="state in ['sale','done','cancel']"
+                    required="is_agent_required == True"
+                />
+
+                <field
+                    name="supervisor_id"
+                    readonly="1"
+                    force_save="1"
+                    required="is_agent_required == True"
+                />
+
+                <field
+                    name="manager_id"
+                    readonly="1"
+                    force_save="1"
+                    invisible="1"
+                />
+
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!-- TREE VIEW -->
+    <record id="view_order_tree_inherited_sales_man" model="ir.ui.view">
+        <field name="name">sale.order.only.tree.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="priority">-1</field>
+        <field name="inherit_id" ref="sale.sale_order_tree"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <field name="sales_man_id" optional="show"/>
+                <field name="supervisor_id" optional="show"/>
+                <field name="manager_id" optional="show"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!-- SEARCH VIEW -->
+    <record id="view_sales_order_filter" model="ir.ui.view">
+        <field name="name">sale.order.list.select</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="sales_man_id"/>
+                <field name="supervisor_id"/>
+                <field name="manager_id"/>
+            </xpath>
+
+            <xpath expr="//search/group" position="inside">
+
+                <filter
+                    string="Agent"
+                    name="agent"
+                    domain="[]"
+                    context="{'group_by':'sales_man_id'}"
+                />
+
+                <filter
+                    string="Supervisor"
+                    name="supervisor_id"
+                    domain="[]"
+                    context="{'group_by':'supervisor_id'}"
+                />
+
+                <filter
+                    string="Manager"
+                    name="manager_id"
+                    domain="[]"
+                    context="{'group_by':'manager_id'}"
+                />
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

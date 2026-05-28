@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="salesman_statement_wizard_form_view" model="ir.ui.view">
+            <field name="name">salesman.statement.wiz.form</field>
+            <field name="model">salesman.statement.wiz</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="salesman_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="currency_id" options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print PDF" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_open_salesman_statement_wizard" model="ir.actions.act_window">
+            <field name="name">Salesman Customer Statement</field>
+            <field name="res_model">salesman.statement.wiz</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            id="menu_salesman_statement_report"
+            name="Salesman Customer Statement"
+            parent="account.menu_finance_reports"
+            action="action_open_salesman_statement_wizard"
+            sequence="3"/>
+        <menuitem
+            id="menu_salesman_statement_report_customer"
+            name="Salesman Customer Statement"
+            parent="account.menu_finance_receivables"
+            action="action_open_salesman_statement_wizard"
+            sequence="600"/>
+    </data>
+</odoo>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_res_partner_list" model="ir.ui.view">
+        <field name="name">res.partner.list</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name='phone' position="after">
+                <field name="agent"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_partner_form_agent" model="ir.ui.view">
+        <field name="name">res.partner.form.agent</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='o_address_format']" position="after">
+                <field name="agent_id" string="Agent" options="{'no_create': True}"/>
+                <field name="supervisor_id" options="{'no_create': True}"/>
+                <field name="manager_id" options="{'no_create': True}"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='category_id']"  position="after">
+                <field name="agent" string="Is Agent"/>
+                <field name="team_id" invisible="agent != True"/>
+            </xpath>
+            
+            <!--<xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="required">0</attribute>
+            </xpath>
+            
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="widget"></attribute>
+            </xpath>-->
+        </field>
+    </record>
+
+    <record id="res_partner_view_search" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.res_partner_view_search"/>
+        <field name="arch" type="xml">
+            <filter name="supplier" position="after">
+                <filter string="Agents" name="agent" domain="[('agent', '=', True)]" help="Agent Partners"/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter_inherit_agent" model="ir.ui.view">
+        <field name="name">res.partner.filter.inherit.agent</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="agent_id" string="Agent"/>
+            </xpath>
+            <xpath expr="//search/group" position="inside">
+                <filter string="Agent" name="agent" domain="" context="{'group_by': 'agent_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_agent_form" model="ir.actions.act_window">
+        <field name="name">Agents</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('agent','=',True)]</field>
+        <field name="context" eval="{'default_agent': True }"/>
+        <field name="binding_view_types">form,kanban,list</field>
+        <field name="search_view_id" ref="res_partner_view_search"/>
+    </record>
+
+    <menuitem id="menu_agent_form" parent="sale.sale_order_menu" action="action_agent_form"
+              groups="sales_team.group_sale_manager" sequence="40"/>
+
+    <record id="res_partner_action_customer_sale" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('agent','=',True)]</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new customer in your address book
+          </p><p>
+            Odoo helps you easily track all activities related to a customer.
+          </p>
+        </field>
+    </record>
+    <record id="view_partner_form_agent_warehouse" model="ir.ui.view">
+        <field name="name">res.partner.form.agent.warehouse</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="warehouse_id" placeholder="Agent's Default Warehouse"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_partner_tree_agent_warehouse" model="ir.ui.view">
+        <field name="name">res.partner.tree.agent.warehouse</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="warehouse_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
