@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_agent_commission_achievement_view_list" model="ir.ui.view">
+        <field name="name">sale.agent.commission.achievement.view.list</field>
+        <field name="model">sale.agent.commission.achievement</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="agent_id"/>
+                <field name="company_id" optional="hide"/>
+                <field name="date"/>
+                <field name="type"/>
+                <field name="amount"/>
+                <field name="currency_id" optional="hide"/>
+                <field name="note"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="sale_agent_commission_achievement_view_search" model="ir.ui.view">
+        <field name="name">sale.agent.commission.achievement.view.search</field>
+        <field name="model">sale.agent.commission.achievement</field>
+        <field name="arch" type="xml">
+            <search string="Agent Commission Achievement">
+                <field name="agent_id"/>
+                <field name="date"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="sale_agent_commission_achievement_view_form" model="ir.ui.view">
+        <field name="name">sale.agent.commission.achievement.form</field>
+        <field name="model">sale.agent.commission.achievement</field>
+        <field name="arch" type="xml">
+            <form string="Agent Commission Achievement">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="agent_id"/>
+                            <field name="type"/>
+                            <field name="currency_id"/>
+                            <field name="note"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="company_id"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sale_commission_action_agent_achievement" model="ir.actions.act_window">
+        <field name="name">Agent Adjustments</field>
+        <field name="res_model">sale.agent.commission.achievement</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="sale_agent_commission_achievement_view_list"/>
+        <field name="search_view_id" ref="sale_agent_commission_achievement_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create an agent adjustment
+            </p>
+        </field>
+    </record>
+</odoo>

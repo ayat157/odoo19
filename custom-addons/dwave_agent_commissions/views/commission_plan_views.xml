@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_inherit_sale_commission_plan_form" model="ir.ui.view">
+            <field name="name">view.inherit.sale.commission.plan.form</field>
+            <field name="model">sale.commission.plan</field>
+            <field name="inherit_id" ref="sale_commission.sale_commission_plan_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_open_agent_commission" type="object"
+                            class="oe_stat_button" icon="fa-dollar"
+                            invisible="user_type != 'agent' or state not in ('approved', 'done')">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">Agent Commissions</span>
+                        </div>
+                    </button>
+                </xpath>
+                <xpath expr="//page[last()]" position="after">
+                    <page string="Agents" invisible="user_type != 'agent'">
+                        <field name="agent_ids">
+                            <list editable="bottom">
+                                <field name="agent_id"/>
+                                <field name="date_from" required="True"/>
+                                <field name="date_to"/>
+                                <field name="other_plans" widget="many2many_tags" readonly="True"/>
+                            </list>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

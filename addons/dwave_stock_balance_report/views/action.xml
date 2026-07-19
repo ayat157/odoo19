@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    Client Action to open Stock Balance Report Wizard-->
+    <record id="action_stock_balance_report" model="ir.actions.client">
+        <field name="name">Stock Balance Report</field>
+        <field name="tag">dwave_stock_balance_report.open_wizard</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="stock.model_stock_move_line"/>
+        <field name="binding_view_types">list</field>
+    </record>
+</odoo>

@@ -1,0 +1,143 @@
+.skit-report-dialog {
+    background: #f9fafc;
+     width: 100%;
+}
+
+.skit-report-dialog .card {
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.skit-report-dialog .form-control {
+    border-radius: 10px;
+    border: 1px solid #e3e6ea;
+}
+
+.skit-report-dialog .form-control:focus {
+    box-shadow: 0 0 0 2px rgba(111, 66, 193, 0.15);
+    border-color: #6f42c1;
+}
+
+.skit-large-modal .modal-dialog {
+    max-width: 85%;
+}
+
+.skit-large-modal .modal-content {
+    height: 85vh;
+}
+
+/* footer */
+.skit-footer {
+    border-top: none;
+    padding: 16px 24px;
+}
+
+/* primary button */
+.skit-btn-primary {
+    background: linear-gradient(135deg, #6f42c1, #8e5bd9);
+    border: none;
+}
+
+.skit-btn-primary:hover {
+    background: linear-gradient(135deg, #5a32a3, #7a4cc2);
+}
+
+/* container */
+.skit-multi-select {
+    position: relative;
+}
+
+/* select box */
+.skit-select-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e3e6ea;
+    border-radius: 10px;
+    padding: 8px 12px;
+    background: #fff;
+    cursor: text;
+}
+
+.skit-select-box:focus-within {
+    border-color: #6f42c1;
+    box-shadow: 0 0 0 2px rgba(111, 66, 193, 0.15);
+}
+
+/* tags container */
+.skit-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+}
+
+/* tag (chip style) */
+.skit-tag {
+    display: flex;
+    align-items: center;
+    background: #eef2ff;
+    color: #4b3f72;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 12px;
+    gap: 6px;
+}
+
+/* remove button */
+.skit-tag-remove {
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.skit-tag-remove:hover {
+    opacity: 1;
+}
+
+/* input */
+.skit-input {
+    border: none;
+    outline: none;
+    min-width: 120px;
+    flex: 1;
+}
+
+/* arrow */
+.skit-arrow {
+    color: #999;
+}
+
+/* dropdown */
+.skit-dropdown {
+    position: absolute;
+    width: 100%;
+    margin-top: 6px;
+    background: #fff;
+    border: 1px solid #e3e6ea;
+    border-radius: 10px;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* option */
+.skit-option {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.skit-option:hover {
+    background: #f5f7fb;
+}
+
+/* empty */
+.skit-empty {
+    padding: 10px;
+    text-align: center;
+    color: #999;
+}

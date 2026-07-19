@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+<!--    Stock Balance Report Wizard-->
+<t t-name="dwave_stock_balance_report.DatePickerDialog">
+    <div class="modal-body p-4 skit-report-dialog skit-large-modal">
+        <!-- ================= DATE ================= -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="fw-semibold mb-3 d-block">From Date</label>
+                        <input type="date"
+                               class="form-control form-control-lg"
+                               t-model="state.fromDate"/>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="fw-semibold mb-3 d-block">To Date</label>
+                        <input type="date"
+                               class="form-control form-control-lg"
+                               t-model="state.toDate"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ================= WAREHOUSE SECTION ================= -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+                <label class="fw-semibold mb-3 d-block">
+                    Warehouses Selection
+                </label>
+                <div class="d-flex gap-4 mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="warehouse_mode"
+                               id="all_warehouses"
+                               value="all"
+                               t-model="state.warehouse_type"
+                               t-on-change="onChangeWarehouseType"/>
+                        <label class="form-check-label" for="all_warehouses">
+                            All Warehouses
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="warehouse_mode"
+                               id="specific_warehouses"
+                               value="warehouse"
+                               t-model="state.warehouse_type"
+                               t-on-change="onChangeWarehouseType"/>
+                        <label class="form-check-label" for="specific_warehouses">
+                            Specific Warehouses
+                        </label>
+                    </div>
+                </div>
+                <!-- WAREHOUSE MULTI SELECT -->
+                <t t-if="state.warehouse_type === 'warehouse'">
+                    <div class="skit-multi-select">
+                        <div class="skit-select-box" t-on-click="showWarehouseDropdown">
+                            <div class="skit-tags">
+                                <t t-foreach="state.selectedWarehouses" t-as="w" t-key="w.id">
+                                    <span class="o_tag o_tag_color_0 badge rounded-pill">
+                                        <t t-esc="w.display_name"/>
+                                        <span class="skit-tag-remove"
+                                              t-att-data-id="w.id"
+                                              t-on-click.stop="removeWarehouse">✕</span>
+                                    </span>
+                                </t>
+                                <input type="text"
+                                       class="skit-input"
+                                       placeholder="Search warehouses..."
+                                       t-model="state.warehouseSearch"
+                                       t-on-input="onWarehouseSearch"
+                                       t-on-focus="showWarehouseDropdown"/>
+                            </div>
+                            <span class="skit-arrow"
+                                  t-on-click.stop="toggleWarehouseDropdown">
+                                <i class="fa fa-chevron-down"/>
+                            </span>
+                        </div>
+                        <!-- DROPDOWN -->
+                        <t t-if="state.showWarehouseDropdown">
+                            <div class="skit-dropdown">
+                                <t t-foreach="filteredWarehouses" t-as="w" t-key="w.id">
+                                    <div class="skit-option"
+                                         t-att-data-id="w.id"
+                                         t-on-click="addWarehouse">
+                                        <t t-esc="w.display_name"/>
+                                    </div>
+                                </t>
+                                <t t-if="!filteredWarehouses.length">
+                                    <div class="skit-empty">
+                                        No warehouses found
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </div>
+        </div>
+        <!-- ================= BASED ON ================= -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-body">
+
+                <label class="fw-semibold mb-3 d-block">
+                    Based On
+                </label>
+                <div class="d-flex gap-3 mt-2">
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="selection_type"
+                               t-att-checked="state.based_on === 'product'"
+                               id="product"
+                               value="product"
+                               t-model="state.based_on"
+                               t-on-change="onChangeBasedOn"/>
+                        <label class="form-check-label" for="product">
+                            Products
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="selection_type"
+                               t-att-checked="state.based_on === 'category'"
+                               id="category"
+                               value="category"
+                               t-model="state.based_on"
+                               t-on-change="onChangeBasedOn"/>
+                        <label class="form-check-label" for="category">
+                            Categories
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ================= PRODUCT SECTION ================= -->
+        <t t-if="state.based_on === 'product'">
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body">
+                    <label class="fw-semibold mb-3 d-block">
+                        Product Selection
+                    </label>
+                    <div class="d-flex gap-4 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="radio"
+                                   name="product_mode"
+                                   id="all_products"
+                                   value="all"
+                                   t-model="state.selection_type"/>
+                            <label class="form-check-label" for="all_products">
+                                All Products
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="radio"
+                                   name="product_mode"
+                                   id="specific_products"
+                                   value="product"
+                                   t-model="state.selection_type"/>
+                            <label class="form-check-label" for="specific_products">
+                                Specific Products
+                            </label>
+                        </div>
+                    </div>
+                    <!-- MULTI SELECT -->
+                    <t t-if="state.selection_type === 'product'">
+                        <div class="skit-multi-select">
+                            <div class="skit-select-box" t-on-click="showDropdown">
+                                <div class="skit-tags">
+                                    <t t-foreach="state.selectedProducts" t-as="p" t-key="p.id">
+                                        <span class="o_tag o_tag_color_0 badge rounded-pill">
+                                            <t t-esc="p.display_name"/>
+                                            <span class="skit-tag-remove"
+                                                  t-att-data-id="p.id"
+                                                  t-on-click.stop="removeProduct">✕</span>
+                                        </span>
+                                    </t>
+                                    <input type="text"
+                                           class="skit-input"
+                                           placeholder="Search products..."
+                                           t-model="state.search"
+                                           t-on-input="onSearch"
+                                           t-on-focus="showDropdown"/>
+                                </div>
+
+                                <span class="skit-arrow"
+                                      t-on-click.stop="toggleDropdown">
+                                    <i class="fa fa-chevron-down"/>
+                                </span>
+                            </div>
+                            <!-- DROPDOWN -->
+                            <t t-if="state.showDropdown">
+                                <div class="skit-dropdown">
+                                    <t t-foreach="filteredProducts" t-as="p" t-key="p.id">
+                                        <div class="skit-option"
+                                             t-att-data-id="p.id"
+                                             t-on-click="addProduct">
+                                            <t t-esc="p.display_name"/>
+                                        </div>
+                                    </t>
+                                    <t t-if="!filteredProducts.length">
+                                        <div class="skit-empty">
+                                            No products found
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+        <!-- ================= CATEGORY SECTION ================= -->
+        <t t-if="state.based_on === 'category'">
+
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body">
+
+                    <label class="fw-semibold mb-3 d-block">
+                        Category Selection
+                    </label>
+                    <div class="d-flex gap-4 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="radio"
+                                   name="category_mode"
+                                   id="all_categories"
+                                   value="all"
+                                   t-model="state.category_type"/>
+                            <label class="form-check-label" for="all_categories">
+                                All Categories
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                   type="radio"
+                                   name="category_mode"
+                                   id="specific_categories"
+                                   value="category"
+                                   t-model="state.category_type"/>
+                            <label class="form-check-label" for="specific_categories">
+                                    Specific Categories
+                            </label>
+                        </div>
+                    </div>
+                    <!-- CATEGORY MULTI SELECT -->
+                    <t t-if="state.category_type === 'category'">
+                        <div class="skit-multi-select">
+                            <div class="skit-select-box" t-on-click="showCategoryDropdown">
+                                <div class="skit-tags">
+                                    <t t-foreach="state.selectedCategories" t-as="c" t-key="c.id">
+                                        <span class="o_tag o_tag_color_0 badge rounded-pill">
+                                            <t t-esc="c.display_name"/>
+                                            <span class="skit-tag-remove"
+                                                  t-att-data-id="c.id"
+                                                  t-on-click.stop="removeCategory">✕</span>
+                                        </span>
+                                    </t>
+                                    <input type="text"
+                                           class="skit-input"
+                                           placeholder="Search categories..."
+                                           t-model="state.categorySearch"
+                                           t-on-input="onCategorySearch"
+                                           t-on-focus="showCategoryDropdown"/>
+                                </div>
+                                <span class="skit-arrow"
+                                      t-on-click.stop="toggleCategoryDropdown">
+                                    <i class="fa fa-chevron-down"/>
+                                </span>
+                            </div>
+                            <!-- DROPDOWN -->
+                            <t t-if="state.showCategoryDropdown">
+                                <div class="skit-dropdown">
+                                    <t t-foreach="filteredCategories" t-as="c" t-key="c.id">
+                                        <div class="skit-option"
+                                             t-att-data-id="c.id"
+                                             t-on-click="addCategory">
+                                            <t t-esc="c.display_name"/>
+                                        </div>
+                                    </t>
+                                    <t t-if="!filteredCategories.length">
+                                        <div class="skit-empty">
+                                            No categories found
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+        <!-- ERROR -->
+        <div class="text-danger" t-if="state.error">
+            <t t-esc="state.error"/>
+        </div>
+    </div>
+    <!-- ================= FOOTER ================= -->
+    <div class="modal-footer skit-footer d-flex gap-2">
+        <button class="btn btn-light px-4"
+                t-on-click="_closeDialog">
+            <i class="fa fa-times me-2"></i>Cancel
+        </button>
+        <button class="btn btn-info px-4"
+                t-on-click="onGenerateSummary"
+                t-att-disabled="state.loading">
+            <i class="fa fa-file-pdf-o me-2"></i>
+            <t t-if="state.loading">Generating...</t>
+            <t t-else="">Summary Report</t>
+        </button>
+        <button class="btn btn-outline-secondary px-4"
+                t-on-click="onPrintPDF"
+                t-att-disabled="state.loading">
+            <i class="fa fa-file-pdf-o me-2"></i>
+            <t t-if="state.loading">Generating...</t>
+            <t t-else="">Export PDF</t>
+        </button>
+        <button class="btn btn-success px-4"
+                t-on-click="onGenerate"
+                t-att-disabled="state.loading">
+            <i class="fa fa-file-excel-o me-2"></i>
+            <t t-if="state.loading">Generating...</t>
+            <t t-else="">Export Excel</t>
+        </button>
+    </div>
+</t>
+</templates>

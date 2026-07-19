@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="purchase_vat_report_template">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="o">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page"
+                         style="direction: rtl; font-family: Arial;">
+
+
+                        <!-- Header -->
+
+                        <div style="text-align:center; margin-bottom:20px;">
+
+                            <h2>
+                                تقرير ضريبة المشتريات المستردة
+                            </h2>
+
+                            <h4>
+                                Purchase VAT Recovery Report
+                            </h4>
+
+                        </div>
+
+
+                        <!-- Company Information -->
+
+                        <table class="table table-sm"
+                               style="width:100%;">
+
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        الشركة:
+                                    </strong>
+
+                                    <span t-esc="company"/>
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        الفترة:
+                                    </strong>
+
+                                    <span t-esc="date_from"/>
+                                    -
+                                    <span t-esc="date_to"/>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <strong>
+                                        الضريبة:
+                                    </strong>
+
+                                    <span t-esc="tax"/>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+                                        تاريخ الطباعة:
+                                    </strong>
+
+                                    <span t-esc="context_timestamp(
+                                        datetime.datetime.now()
+                                    ).strftime('%Y-%m-%d')"/>
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+
+                        <br/>
+
+
+                        <!-- Details Table -->
+
+                        <table class="table table-bordered"
+                               style="width:100%; font-size:13px;">
+
+
+                            <thead>
+
+                                <tr style="background:#003366;color:white;">
+
+                                    <th>
+                                        #
+                                    </th>
+
+                                    <th>
+                                        التاريخ
+                                    </th>
+
+                                    <th>
+                                        المورد
+                                    </th>
+
+                                    <th>
+                                        رقم الفاتورة
+                                    </th>
+
+                                    <th>
+                                        المبلغ قبل الضريبة
+                                    </th>
+
+                                    <th>
+                                        %
+                                    </th>
+
+                                    <th>
+                                        VAT
+                                    </th>
+
+                                    <th>
+                                        الإجمالي
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+
+                                <t t-set="counter" t-value="1"/>
+
+
+                                <t t-foreach="lines"
+                                   t-as="line">
+
+
+                                    <tr>
+
+
+                                        <td>
+                                            <span t-esc="counter"/>
+                                        </td>
+
+
+                                        <td>
+                                            <span t-esc="line['date']"/>
+                                        </td>
+
+
+                                        <td>
+                                            <span t-esc="line['vendor']"/>
+                                        </td>
+
+
+                                        <td>
+                                            <span t-esc="line['bill_number']"/>
+                                        </td>
+
+
+                                        <td class="text-right">
+
+                                            <span t-esc="
+                                                '{:,.2f}'.format(
+                                                    line['untaxed']
+                                                )
+                                            "/>
+
+                                        </td>
+
+
+                                        <td>
+
+                                            <span t-esc="
+                                                '{}%'.format(
+                                                    line['tax_rate']
+                                                )
+                                            "/>
+
+                                        </td>
+
+
+                                        <td class="text-right">
+
+                                            <span t-esc="
+                                                '{:,.2f}'.format(
+                                                    line['tax_amount']
+                                                )
+                                            "/>
+
+                                        </td>
+
+
+                                        <td class="text-right">
+
+                                            <span t-esc="
+                                                '{:,.2f}'.format(
+                                                    line['total']
+                                                )
+                                            "/>
+
+                                        </td>
+
+
+                                    </tr>
+
+
+                                    <t t-set="counter"
+                                       t-value="counter + 1"/>
+
+
+                                </t>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                        <br/>
+
+
+                        <!-- Summary -->
+
+
+                        <table class="table table-bordered"
+                               style="width:50%; margin-right:auto;">
+
+
+                            <tr>
+
+                                <td>
+                                    إجمالي المشتريات
+                                </td>
+
+                                <td>
+
+                                    <span t-esc="
+                                    '{:,.2f}'.format(
+                                        total_untaxed
+                                    )
+                                    "/>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    ضريبة المشتريات المستردة
+                                </td>
+
+
+                                <td>
+
+                                    <span t-esc="
+                                    '{:,.2f}'.format(
+                                        total_tax
+                                    )
+                                    "/>
+
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    الإجمالي النهائي
+                                </td>
+
+
+                                <td>
+
+                                    <strong>
+
+                                    <span t-esc="
+                                    '{:,.2f}'.format(
+                                        total_amount
+                                    )
+                                    "/>
+
+                                    </strong>
+
+                                </td>
+
+                            </tr>
+
+
+                        </table>
+
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+
+</odoo>

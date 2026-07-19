@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <menuitem id="menu_agent_commission_root"
+                  name="Agent Commissions"
+                  parent="sale_commission.menu_sale_commission"
+                  sequence="99"/>
+
+        <menuitem
+                action="sale_commission_action_agent_achievement"
+                id="sale_commission_agent_achievement_menu"
+                parent="menu_agent_commission_root"
+                groups="sales_team.group_sale_manager"
+                sequence="50"/>
+    </data>
+</odoo>

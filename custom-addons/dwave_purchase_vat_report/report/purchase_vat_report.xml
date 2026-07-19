@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!-- Purchase VAT Report Action -->
+
+    <record id="action_purchase_vat_report" model="ir.actions.report">
+
+        <field name="name">
+            Purchase VAT Recovery Report
+        </field>
+
+        <field name="model">
+            purchase.vat.report.wizard
+        </field>
+
+        <field name="report_type">
+            qweb-pdf
+        </field>
+
+        <field name="report_name">
+            dwave_purchase_vat_report.purchase_vat_report_template
+        </field>
+
+        <field name="report_file">
+            dwave_purchase_vat_report.purchase_vat_report_template
+        </field>
+
+        <field name="binding_model_id"
+               ref="model_purchase_vat_report_wizard"/>
+
+        <field name="binding_type">
+            report
+        </field>
+
+    </record>
+
+
+</odoo>

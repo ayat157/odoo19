@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Added menus in Inventory model -->
+	<menuitem action="action_stock_balance_report" id="menu_stock_report_balance" name="Stock Movement Report" parent="stock.menu_warehouse_report" sequence="250"/>
+</odoo>

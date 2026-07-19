@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Purchase Order in POS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body style="font-family: &quot;Montserrat&quot;, sans-serif;background-color: #71639e08;">
+<!--LOGO + CERTIFICATION-->
+<div class="sks-logo-certification-section container-fluid py-md-5">
+    <div class="logo-section my-3 py-3"
+         style="border: 2px solid #71639e10; padding: 0 35px; border-radius: 10px; border: 2px solid #e9ecef; background-color: white;">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-lg-4">
+                <div class="my-3 mx-auto mx-sm-0"
+                     style="width: 250px; ">
+                    <img src="./assets/skit_logo.png" alt=""
+                         style="width: 100%;border-radius: 10px;">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h2 class="oe_slogan" style="font-weight: bold; font-size: 36px;">Odoo Certified Partner</h2>
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+                    <div class="my-3 d-flex align-items-center justify-content-center justify-content-sm-end gap-1 flex-wrap">
+                        <img src="./assets/images/odoo_certification/v14.png"
+                             alt=""
+                             width="85">
+                        <img src="./assets/images/odoo_certification/v16.png"
+                             alt=""
+                             width="85">
+                        <img src="./assets/images/odoo_certification/v17.png"
+                             alt=""
+                             width="85">
+                        <img src="./assets/images/odoo_certification/v18.png"
+                             alt=""
+                             width="85">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--MODULE HEADING-->
+<div class="sks-module-heading-section container-fluid text-center py-md-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="font-size: 2.3rem;padding-top: 1rem;font-weight: 700;color: black;">
+                Stock Balance Report
+            </h3>
+            <p class="mb-4" style="font-size: 20px;color: #000000; font-weight: 400;">
+                A powerful stock movement report module for Odoo to track inventory by product or category within a date
+                range.
+                Generate detailed reports and export them in PDF or XLSX with ease.
+            </p>
+            <div class="d-flex justify-content-center gap-1 flex-wrap">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="my-3 d-flex align-items-center justify-content-center justify-content-sm-center">
+                            <div class="text-center"
+                                 style=" background-color: #71639e !important; font-size: 1rem !important; color: #fff !important; font-weight: 500 !important; padding: 8px !important; margin: 0 3px !important; border-radius: 50px !important; min-width: 130px !important;">
+                                Community
+                            </div>
+                            <div class="text-center"
+                                 style=" background-color: #71639e !important; font-size: 1rem !important; color: #fff !important; font-weight: 500 !important; padding: 8px !important; margin: 0 3px !important; border-radius: 50px !important; min-width: 130px !important;">
+                                Enterprise
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--ABOUT US-->
+<div class="sks-aboutus-section container-fluid py-md-5">
+    <div>
+        <div class="row align-items-center">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12"
+                 style="text-align:center;">
+                <h2 class="text-center"
+                    style="font-size: 2.3rem;font-weight: 700;color: black;">About
+                    <span>Us</span>
+                </h2>
+                <img src="./assets/images/others/heading.png" alt="heading">
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 card-group">
+                <div class="sks_counter_box rounded rounded-4 w-100 shadow justify-content-between"
+                     style="padding:30px 25px; border-radius:15px; background-color:#fff; margin:15px 0">
+                    <div class="sks_content_box justify-content-between d-flex align-items-center">
+                        <div class="sks_left">
+                            <div class="sks_title_text"
+                                 style="text-transform:capitalize; font-size:18px; margin-bottom:5px; color:#4c4c4c; font-weight:600">
+                                Days Free Support
+                            </div>
+                            <div class="sks_counter_num"
+                                 style="font-size:18px; letter-spacing:1px; font-weight:600; color:#4c4c4c">90
+                            </div>
+                        </div>
+                        <div class="sks_right">
+                            <div class="sks_icon icon_2 d-flex justify-content-center align-items-center"
+                                 style="width:60px; height:60px; border-radius:50%; background-color:#ee368c1a">
+                                <img src="./assets/images/about_us/days_support.png"
+                                     alt="Counter box img"
+                                     style="width:100%; height:100%; padding:10px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 card-group">
+                <div class="sks_counter_box rounded rounded-4 w-100 shadow"
+                     style="padding:30px 25px; border-radius:15px; background-color:#fff; margin:15px 0">
+                    <div class="sks_content_box justify-content-between d-flex align-items-center">
+                        <div class="sks_left">
+                            <div class="sks_title_text"
+                                 style="text-transform:capitalize; font-size:18px; margin-bottom:5px; color:#4c4c4c; font-weight:600">
+                                Custom Apps
+                            </div>
+                            <div class="sks_counter_num"
+                                 style="font-size:18px; letter-spacing:1px; font-weight:600; color:#4c4c4c">125+
+                            </div>
+                        </div>
+                        <div class="sks_right">
+                            <div class="sks_icon icon_4 d-flex justify-content-center align-items-center"
+                                 style="width:60px; height:60px; border-radius:50%; background-color:#ee83361a">
+                                <img src="./assets/images/about_us/custom_apps.png"
+                                     alt="counter box img" style="width:100%; height:100%; padding:10px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 card-group">
+                <div class="sks_counter_box rounded rounded-4 w-100 shadow"
+                     style="padding:30px 25px; border-radius:15px; background-color:#fff; margin:15px 0">
+                    <div class="sks_content_box justify-content-between d-flex align-items-center">
+                        <div class="sks_left">
+                            <div class="sks_title_text"
+                                 style="text-transform:capitalize; font-size:18px; margin-bottom:5px; color:#4c4c4c; font-weight:600">
+                                Happy Customer
+                            </div>
+                            <div class="sks_counter_num"
+                                 style="font-size:18px; letter-spacing:1px; font-weight:600; color:#4c4c4c">100+
+                            </div>
+                        </div>
+                        <div class="sks_right">
+                            <div class="sks_icon icon_2 d-flex justify-content-center align-items-center"
+                                 style="width:60px; height:60px; border-radius:50%; background-color:#ee83361a">
+                                <img src="./assets/images/about_us/happy_customer.png"
+                                     alt="counter box img"
+                                     style="width:100%; height:100%; padding:10px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 card-group">
+                <div class="sks_counter_box rounded rounded-4 w-100 shadow"
+                     style="padding:30px 25px; border-radius:15px; background-color:#fff; margin:15px 0">
+                    <div class="sks_content_box justify-content-between d-flex align-items-center">
+                        <div class="sks_left">
+                            <div class="sks_title_text"
+                                 style="text-transform:capitalize; font-size:18px; margin-bottom:5px; color:#4c4c4c; font-weight:600">
+                                Year Of Experience
+                            </div>
+                            <div class="sks_counter_num"
+                                 style="font-size:18px; letter-spacing:1px; font-weight:600; color:#4c4c4c">
+                                18+
+                            </div>
+                        </div>
+                        <div class="sks_right">
+                            <div class="sks_icon icon_2 d-flex justify-content-center align-items-center"
+                                 style="width:60px; height:60px; border-radius:50%; background-color:#ee83361a">
+                                <img src="./assets/images/about_us/year_experience.png"
+                                     alt="counter box img"
+                                     style="width:100%; height:100%; padding:10px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 card-group">
+                <div class="sks_counter_box rounded rounded-4 w-100 shadow"
+                     style="padding:30px 25px; border-radius:15px; background-color:#fff; margin:15px 0">
+                    <div class="sks_content_box justify-content-between d-flex align-items-center">
+                        <div class="sks_left">
+                            <div class="sks_title_text"
+                                 style="text-transform:capitalize; font-size:18px; margin-bottom:5px; color:#4c4c4c; font-weight:600">
+                                countries
+                            </div>
+                            <div class="sks_counter_num"
+                                 style="font-size:18px; letter-spacing:1px; font-weight:600; color:#4c4c4c">
+                                23+
+                            </div>
+                        </div>
+                        <div class="sks_right">
+                            <div class="sks_icon icon_3 d-flex justify-content-center align-items-center"
+                                 style="width:60px; height:60px; border-radius:50%; background-color:#2db6f51a">
+                                <img src="./assets/images/about_us/countries.png"
+                                     alt="counter box img" style="width:100%; height:100%; padding:10px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-12 card-group">
+                <div class="sks_counter_box rounded rounded-4 w-100 shadow"
+                     style="padding:30px 25px; border-radius:15px; background-color:#fff; margin:15px 0">
+                    <div class="sks_content_box justify-content-between d-flex align-items-center">
+                        <div class="sks_left">
+                            <div class="sks_title_text"
+                                 style="text-transform:capitalize; font-size:18px; margin-bottom:5px; color:#4c4c4c; font-weight:600">
+                                Industries Served
+                            </div>
+                            <div class="sks_counter_num"
+                                 style="font-size:18px; letter-spacing:1px; font-weight:600; color:#4c4c4c">45+
+                            </div>
+                        </div>
+                        <div class="sks_right">
+                            <div class="sks_icon icon_4 d-flex justify-content-center align-items-center"
+                                 style="width:60px; height:60px; border-radius:50%; background-color:#2db6f51a">
+                                <img src="./assets/images/about_us/industries_served.png"
+                                     alt="counter box img"
+                                     style="width:100%; height:100%; padding:10px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="my-3 d-flex align-items-center justify-content-center justify-content-sm-end gap-1 flex-wrap">
+
+            </div>
+            <br>
+            <div class="col-lg-8 mx-auto justify-content-evenly py-5"
+                 style="display:flex">
+                <!-- Support Button -->
+                <a href="https://srikeshinfotech.com/"
+                   class="contact-btn email-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 200px;justify-content: center;background-color: #0a70d0">
+                    <img src="./assets/images/contact_us/website_icon_white.svg"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">www.srikeshinfotech.com
+                    </span>
+                </a>
+                <a href="https://wa.me/7538824350"
+                   class="contact-btn whatsapp-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 150px;justify-content: center;background-color: #25d366;">
+                    <img src="./assets/images/contact_us/whatsapp.png"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">+91 75388 24350
+                    </span>
+                </a>
+                <a href="mailto:"
+                   class="contact-btn email-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 200px;justify-content: center;background-color: #d25020">
+                    <img src="./assets/images/contact_us/mail.png"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">Email Us
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--THIS MODULE IS BUILT FOR YOU IF:-->
+<div class="sks-module-heading-section container-fluid text-left py-md-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="font-size: 1.75rem; padding-top: 1rem; font-weight: 700; color: black;">
+                This module is built for you if:
+            </h3>
+            <ul style="font-size: 17px; color: #000000; line-height: 2.1; margin-bottom: 0; padding-left: 20px;font-weight: 400;">
+                <li>You want to generate detailed inventory stock movement reports based on a selected date range.</li>
+                <li>Your team needs to analyze stock flow by products or categories for better inventory control.</li>
+                <li>You want to track opening, incoming, outgoing and closing stock in a single report.</li>
+                <li>You need to monitor purchases, sales and damaged stock quantities efficiently.</li>
+                <li>You want to filter reports for specific products or categories using flexible selection options.
+                </li>
+                <li>You want to export inventory reports in PDF and XLSX formats for analysis and sharing.</li>
+                <li>You manage operations where accurate stock tracking and reporting is critical for decision-making.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- HOW ORGANISATIONS USE THIS MODULE -->
+<section style="margin-top:80px; margin-bottom:210px;">
+    <div class="container mt32" style="max-width:1620px">
+        <div style="background-color:#192e76; padding:40px 40px 0px 40px; border:1px solid white; border-radius:0px 40px 0px 40px">
+            <div style="text-align:center; margin-bottom:20px;">
+                <h2 style="font-size:2.3rem; font-weight:700; color:white;">
+                    How Organisations Use This Module
+                </h2>
+                <img src="./assets/images/others/white_heading.png" alt="white_heading">
+            </div>
+            <div class="row d-flex align-items-stretch g-4"
+                 style="margin:0px 20px; background-color:#7fa7f08c; padding:50px 30px; margin-bottom:-130px; border:2px solid #ffffff52; border-radius:20px">
+
+                <div class="col-lg-6 d-flex">
+                    <div style="background-color:#4BA889; padding:30px 15px; border-radius:20px; border:1px solid #ffffff75; height:100%; width:100%;">
+                        <div class="row align-items-start">
+                            <div class="col-2 text-center">
+                                <img src="./assets/key_features/sks_module_icon.svg"
+                                     class="img-fluid" style="width:80px;">
+                            </div>
+                            <div class="col-10">
+                                <h4 style="color:white; font-size:20px; font-weight:600; margin-bottom:12px;">
+                                    Inventory Monitoring
+                                </h4>
+                                <p style="color:white; font-size:16px; line-height:1.6; margin:0;">
+                                    Track stock movement within a selected date range to understand inventory flow and
+                                    maintain accurate stock levels.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 d-flex">
+                    <div style="background-color:#3E8DBA; padding:30px 15px; border-radius:20px; border:1px solid #ffffff75; height:100%; width:100%;">
+                        <div class="row align-items-start">
+                            <div class="col-2 text-center">
+                                <img src="./assets/key_features/sks_module_icon.svg"
+                                     class="img-fluid" style="width:80px;">
+                            </div>
+                            <div class="col-10">
+                                <h4 style="color:white; font-size:20px; font-weight:600; margin-bottom:12px;">
+                                    Product & Category Analysis
+                                </h4>
+                                <p style="color:white; font-size:16px; line-height:1.6; margin:0;">
+                                    Analyze stock data based on products or categories to gain better insights into
+                                    inventory performance.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 d-flex">
+                    <div style="background-color:#C34E4E; padding:30px 15px; border-radius:20px; border:1px solid #ffffff75; height:100%; width:100%;">
+                        <div class="row align-items-start">
+                            <div class="col-2 text-center">
+                                <img src="./assets/key_features/sks_module_icon.svg"
+                                     class="img-fluid" style="width:80px;">
+                            </div>
+                            <div class="col-10">
+                                <h4 style="color:white; font-size:20px; font-weight:600; margin-bottom:12px;">
+                                    Stock Movement Tracking
+                                </h4>
+                                <p style="color:white; font-size:16px; line-height:1.6; margin:0;">
+                                    Monitor purchases, sales damaged stock to maintain transparency in inventory
+                                    transactions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 d-flex">
+                    <div style="background-color:#D6863A; padding:30px 15px; border-radius:20px; border:1px solid #ffffff75; height:100%; width:100%;">
+                        <div class="row align-items-start">
+                            <div class="col-2 text-center">
+                                <img src="./assets/key_features/sks_module_icon.svg"
+                                     class="img-fluid" style="width:80px;">
+                            </div>
+                            <div class="col-10">
+                                <h4 style="color:white; font-size:20px; font-weight:600; margin-bottom:12px;">
+                                    Reporting & Export
+                                </h4>
+                                <p style="color:white; font-size:16px; line-height:1.6; margin:0;">
+                                    Generate detailed reports and export them in PDF or XLSX format for business
+                                    analysis and record-keeping.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KEY HIGHLIGHTS -->
+<div class="sks-key-features-section container-fluid py-md-5">
+    <div class="highlights-section">
+        <div class="col-md-12">
+            <div style="font-family:Inter, sans-serif; font-style:normal; font-weight:700; line-height:120%; text-align:center; text-transform:capitalize; font-size:calc(1rem + 1vw); margin-bottom:16px">
+                <h2 class="text-center"
+                    style="font-size: 2.3rem;font-weight: 700;color: black;">
+                    Key
+                    <span>Highlights</span>
+                </h2>
+                <img src="./assets/images/others/heading.png"
+                     alt="heading">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-4 mb-4">
+                <div class="highlight-card h-100"
+                     style="background-color: #8d76d51f; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                    <div class="card-icon d-flex align-items-center justify-content-center gap-2"
+                         style="width: 60px;height: 60px;border-radius: 10px;margin-bottom: 24px;position: relative;overflow: hidden;background-color: #71639e;">
+                        <img src="./assets/key_features/key_features.svg" width="45" height="45">
+                    </div>
+                    <h3 class="card-title"
+                        style="font-size: 20px;font-weight: 600;color: black;margin-bottom: 12px;letter-spacing: -0.025em;">
+                        Date Range Filtering
+                    </h3>
+                    <p class="card-description"
+                       style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                        Generate stock movement reports using flexible from and to date selection for accurate period
+                        analysis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="highlight-card h-100"
+                     style="background-color: #8d76d51f; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                    <div class="card-icon d-flex align-items-center justify-content-center gap-2"
+                         style="width: 60px;height: 60px;border-radius: 10px;margin-bottom: 24px;position: relative;overflow: hidden;background-color: #71639e;">
+                        <img src="./assets/key_features/key_features.svg" width="45" height="45">
+                    </div>
+                    <h3 class="card-title"
+                        style="font-size: 20px;font-weight: 600;color: black;margin-bottom: 12px;letter-spacing: -0.025em;">
+                        Product & Category Selection
+                    </h3>
+                    <p class="card-description"
+                       style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                        Generate reports based on all or specific products and categories with flexible selection
+                        options.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="highlight-card h-100"
+                     style="background-color: #8d76d51f; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                    <div class="card-icon d-flex align-items-center justify-content-center gap-2"
+                         style="width: 60px;height: 60px;border-radius: 10px;margin-bottom: 24px;position: relative;overflow: hidden;background-color: #71639e;">
+                        <img src="./assets/key_features/key_features.svg" width="45" height="45">
+                    </div>
+                    <h3 class="card-title"
+                        style="font-size: 20px;font-weight: 600;color: black;margin-bottom: 12px;letter-spacing: -0.025em;">
+                        Detailed Stock Insights
+                    </h3>
+                    <p class="card-description"
+                       style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                        View complete stock details including opening, purchase, sale, damage and closing quantities.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-3">
+
+            <div class="col-md-4 mb-4">
+                <div class="highlight-card h-100"
+                     style="background-color: #8d76d51f; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                    <div class="card-icon d-flex align-items-center justify-content-center gap-2"
+                         style="width: 60px;height: 60px;border-radius: 10px;margin-bottom: 24px;position: relative;overflow: hidden;background-color: #71639e;">
+                        <img src="./assets/key_features/key_features.svg" width="45" height="45">
+                    </div>
+                    <h3 class="card-title"
+                        style="font-size: 20px;font-weight: 600;color: black;margin-bottom: 12px;letter-spacing: -0.025em;">
+                        Export Options
+                    </h3>
+                    <p class="card-description"
+                       style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                        Easily download reports in PDF and XLSX formats for sharing, auditing and analysis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="highlight-card h-100"
+                     style="background-color: #8d76d51f; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                    <div class="card-icon d-flex align-items-center justify-content-center gap-2"
+                         style="width: 60px;height: 60px;border-radius: 10px;margin-bottom: 24px;position: relative;overflow: hidden;background-color: #71639e;">
+                        <img src="./assets/key_features/key_features.svg" width="45" height="45">
+                    </div>
+                    <h3 class="card-title"
+                        style="font-size: 20px;font-weight: 600;color: black;margin-bottom: 12px;letter-spacing: -0.025em;">
+                        User-Friendly Wizard
+                    </h3>
+                    <p class="card-description"
+                       style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                        Simple and intuitive wizard interface makes report generation quick and efficient for all users.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- SCREENSHOTS TAB -->
+<div class="sks-tabs-section container-fluid py-md-5">
+    <div class="tabs-design1">
+        <ul class="nav nav-pills justify-content-start justify-content-md-center pb-4 bg-transparent"
+            style="flex-flow: nowrap; overflow: hidden; overflow-x: auto;"
+            id="pills1"
+            role="tablist">
+            <li class="nav-item"
+                role="presentation">
+                <a class="nav-link active"
+                   id="screenshot-tab"
+                   data-bs-toggle="pill"
+                   data-bs-target="#screenshot"
+                   type="button"
+                   role="tab"
+                   style="font-family: Roboto; text-transform: uppercase; font-weight: 600; font-size: 15px; letter-spacing: 1px; width: max-content;border-radius: 50px; margin: 0 5px; padding: 12px 24px; border: 2px solid #e9ecef; position: relative; ">
+                    Screenshots
+                </a>
+            </li>
+            <li class="nav-item d-none"
+                role="presentation">
+                <a class="nav-link"
+                   id="features-tab"
+                   data-bs-toggle="pill"
+                   data-bs-target="#features"
+                   type="button"
+                   role="tab"
+                   style="font-family: Roboto; text-transform: uppercase; font-weight: 600; font-size: 15px; letter-spacing: 1px; width: max-content;border-radius: 50px; margin: 0 5px; padding: 12px 24px; border: 2px solid #e9ecef; position: relative; ">
+                    Features
+                </a>
+            </li>
+            <li class="nav-item d-none"
+                role="presentation">
+                <a class="nav-link"
+                   id="latest-release-tab"
+                   data-bs-toggle="pill"
+                   data-bs-target="#latest-release"
+                   type="button"
+                   role="tab"
+                   style="font-family: Roboto; text-transform: uppercase; font-weight: 600; font-size: 15px; letter-spacing: 1px; width: max-content;border-radius: 50px; margin: 0 5px; padding: 12px 24px; border: 2px solid #e9ecef; position: relative;">
+                    Latest Release
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content rounded-4"
+             style="border: 2px solid #e9ecef; border-radius: 10px; background-color: #beade412;" id="pills1Content">
+            <div class="tab-pane fade show active" id="screenshot" role="tabpane2">
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-2"
+                        style="font-size: 2.3rem;font-weight: 700;color: black;">
+                        Quick Access from Inventory Menu
+                    </h2>
+                    <div class="para"
+                         style="max-width: 100%;text-align: center;margin: auto;font-size: 18px;margin-bottom: 2rem;color: #000000; font-weight: 400;">
+                        A dedicated Stock Movement Report menu is added under Inventory → Reporting, giving you
+                        one-click access to detailed stock insights.
+                    </div>
+
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/Sub_Menu.png" alt="" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-2"
+                        style="font-size: 2.3rem;font-weight: 700;color: black;">
+                        Flexible Date Range Selection
+                    </h2>
+                    <div class="para"
+                         style="max-width: 100%;text-align: center;margin: auto;font-size: 18px;margin-bottom: 2rem;color: #000000; font-weight: 400;">
+                        Select From Date and To Date to generate reports for any required time period.
+                    </div>
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/Date_Range.png" alt="" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-2"
+                        style="font-size: 2.3rem;font-weight: 700;color: black;">
+                        Product or Category-Based Reporting
+                    </h2>
+
+                    <div class="para"
+                         style="max-width: 100%;text-align: center;margin: auto;font-size: 18px;margin-bottom: 2rem;color: #000000; font-weight: 400;">
+                        Choose to view stock movement based on Products or Categories with simple selection options -
+                        for all items or just the specific ones you need.
+                    </div>
+
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/Based_On_Filter.png" alt="" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-2"
+                        style="font-size: 2.3rem;font-weight: 700;color: black;">
+                        One-Click Export to PDF or Excel
+                    </h2>
+
+                    <div class="para"
+                         style="max-width: 100%;text-align: center;margin: auto;font-size: 18px;margin-bottom: 2rem;color: #000000; font-weight: 400;">
+                        Download the report instantly as a PDF for printing and sharing or as an XLSX spreadsheet for
+                        further analysis — no extra setup needed.
+                    </div>
+
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/Reports.png" alt="" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-2"
+                        style="font-size: 2.3rem;font-weight: 700;color: black;">
+                        Print-Ready PDF - Grouped by Product or Category
+                    </h2>
+
+                    <div class="para"
+                         style="max-width: 100%;text-align: center;margin: auto;font-size: 18px;margin-bottom: 2rem;color: #000000; font-weight: 400;">
+                        Download a print-ready PDF that lists every stock movement grouped by product - or grouped by
+                        category and product - with opening, Inbound, Outbound, damage and closing balances clearly
+                        tracked across your selected date range.
+                    </div>
+                    <p style="font-size: 18px; color: #000; max-width: 80%; display: block; padding: 4px;"><strong>PDF
+                        Export - Grouped by Product</strong></p>
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/product_filter_pdf.png" alt=""
+                             style="max-width: 100%; height: auto;margin-left: 5.5%;">
+                    </div>
+                    <p style="font-size: 18px; color: #000; max-width: 80%; display: block; padding: 4px;"><strong>PDF
+                        Export - Grouped by Category</strong></p>
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/category_filter_pdf.png" alt=""
+                             style="max-width: 100%; height: auto;margin-left: 5.5%;">
+                    </div>
+                </div>
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-2"
+                        style="font-size: 2.3rem;font-weight: 700;color: black;">
+                        Pivot-Ready Excel Reports
+                    </h2>
+
+                    <div class="para"
+                         style="max-width: 100%;text-align: center;margin: auto;font-size: 18px;margin-bottom: 2rem;color: #000000; font-weight: 400;">
+                        Export the report to Excel with structured data by product or category, ready for filtering and
+                        analysis.
+                    </div>
+                    <p style="font-size: 18px; color: #000; max-width: 80%; display: block; padding: 4px;"><strong>Excel
+                        Export - Grouped by Product</strong></p>
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/product_filter_xlsx.png" alt=""
+                             style="max-width: 100%; height: auto;">
+                    </div>
+                    <p style="font-size: 18px; color: #000; max-width: 80%; display: block; padding: 4px;"><strong>Excel
+                        Export - Grouped by Category</strong></p>
+                    <div class="mb-4" style="border-radius: 10px; overflow: hidden; border: 2px solid #e7e7e7;">
+                        <img src="assets/screenshots/category_filter_xlsx.png" alt=""
+                             style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane fade" id="features" role="tabpanel">
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-4" style="font-size: 2.3rem; font-weight: 700; color: black;">Our <span>Features</span>
+                    </h2>
+                    <div class="row" style="border-radius: 10px;">
+                        <div class="col-md-4">
+                            <div class="feature-item mb-4 d-flex flex-column align-items-center justify-content-center"
+                                 style="padding: 25px; background-color: #637eea0d; border-radius: 10px; text-align: left;">
+                                <div class="feature-number d-flex align-items-center justify-content-center"
+                                     style="width: 45px; height: 45px; background-color: #7877c633; border-radius: 50%; font-size: 1.2rem; font-weight: 600; color: #71639e; margin-bottom: 15px;">
+                                    01
+                                </div>
+                                <h3 class="feature-title"
+                                    style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0; color: black; line-height: 1.3;">
+                                    Heading</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-item mb-4 d-flex flex-column align-items-center justify-content-center"
+                                 style="padding: 25px; background-color: #637eea0d; border-radius: 10px; text-align: left;">
+                                <div class="feature-number d-flex align-items-center justify-content-center"
+                                     style="width: 45px; height: 45px; background-color: #7877c633; border-radius: 50%; font-size: 1.2rem; font-weight: 600; color: #71639e; margin-bottom: 15px;">
+                                    02
+                                </div>
+                                <h3 class="feature-title"
+                                    style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0; color: black; line-height: 1.3;">
+                                    Heading</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-item mb-4 d-flex flex-column align-items-center justify-content-center"
+                                 style="padding: 25px; background-color: #637eea0d; border-radius: 10px; text-align: left;">
+                                <div class="feature-number d-flex align-items-center justify-content-center"
+                                     style="width: 45px; height: 45px; background-color: #7877c633; border-radius: 50%; font-size: 1.2rem; font-weight: 600; color: #71639e; margin-bottom: 15px;">
+                                    03
+                                </div>
+                                <h3 class="feature-title"
+                                    style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0; color: black; line-height: 1.3;">
+                                    Heading</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="latest-release" role="tabpanel">
+                <div class="p-3 py-md-5">
+                    <h2 class="text-center mb-4" style="font-size: 2.3rem; font-weight: 700; color: black;">Latest
+                        <span>Releases</span></h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="release-item h-100"
+                                 style="position: relative; padding: 30px; border: 2px solid #71639e24; border-radius: 15px;">
+                                <div class="release-header d-flex align-items-center flex-wrap gap-3"
+                                     style="margin-bottom: 0.75rem;">
+                                    <div class="version" style="font-size: 1.25rem; font-weight: 700; color: #1a202c;">
+                                        Latest Release 19.0.1.0.0
+                                    </div>
+                                    <div style="padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; background-color: #feb2b2; color: #c53030; border: 2px solid #fca5a5;">
+                                        Add
+                                    </div>
+                                    <div class="date" style="color: #64748b; font-size: 0.875rem; font-weight: 500;">
+                                        <img src="./assets/images/others/calendar.png" alt="" width="16" height="16"
+                                             style="margin-right: 5px;">24th Jan, 2026
+                                    </div>
+                                </div>
+                                <div class="feature-list" style="margin-top: 1rem;">
+                                    <div class="feature-item p-3"
+                                         style="border-radius: 10px; display: flex; align-items: center; background-color: #f5f5f5e7; text-align: left;">
+                                        <div class="feature-text"
+                                             style="color: #6b7280; line-height: 1.6; font-size: 0.95rem;">Initial
+                                            Commit.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODULE SERVICES -->
+<div class="sks-module-services-section container-fluid py-md-5">
+    <div class="justify-content-center">
+        <div class="sks_center text-center">
+            <h2 class="text-center" style="font-size: 2.3rem; font-weight: 700; color: black;">Module
+                <span>Services</span></h2>
+            <img src="./assets/images/others/heading.png" alt="heading">
+        </div>
+        <div class="d-flex mt-3">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                <div class="d-flex flex-column align-items-center">
+                    <img class="img-fluid text-center" src="./assets/images/module_details/f-1.png" width="184"
+                         height="178" loading="lazy" alt="">
+                    <div style="font-weight: 500; font-size: 18px; line-height: 29.64px; text-align: center; margin-top: 16px;">
+                        Free Installation
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                <div class="d-flex flex-column align-items-center">
+                    <img class="img-fluid" src="./assets/images/module_details/f-2.png" width="184" height="178"
+                         loading="lazy" alt="">
+                    <div style="font-weight: 500; font-size: 18px; line-height: 29.64px; text-align: center; margin-top: 16px;">
+                        24x7 Assistance
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                <div class="d-flex flex-column align-items-center">
+                    <img class="img-fluid" src="./assets/images/module_details/f-3.png" width="184" height="178"
+                         loading="lazy" alt="">
+                    <div style="font-weight: 500; font-size: 18px; line-height: 29.64px; text-align: center; margin-top: 16px;">
+                        Fully Scalable
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                <div class="d-flex flex-column align-items-center">
+                    <img class="img-fluid" src="./assets/images/module_details/f-4.png" width="184" height="178"
+                         loading="lazy" alt="">
+                    <div style="font-weight: 500; font-size: 18px; line-height: 29.64px; text-align: center; margin-top: 16px;">
+                        Free 90 Days Support
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- INDUSTRIES WE SERVE -->
+<div class="sks-industries-section container-fluid py-md-5">
+    <div class="highlights-section">
+        <div class="row mt-3">
+            <div class="position-relative overflow-hidden">
+                <div class="position-relative"
+                     style="border-radius:16px">
+                    <div class="row py-4 py-lg-0">
+                        <div class="col-md-12">
+                            <div style="font-family:Inter, sans-serif; font-style:normal; font-weight:700; line-height:120%; text-align:center; text-transform:capitalize; font-size:calc(1rem + 1vw); margin-bottom:16px">
+                                <div class="sks_center text-center mb-5">
+                                    <h2 class="text-center"
+                                        style="font-size: 2.3rem;font-weight: 700;color: black;">
+                                        Industries
+                                        <span>We Serve</span>
+                                    </h2>
+                                    <img src="./assets/images/others/heading.png"
+                                         alt="heading">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 h-100 col-lg-6 col-12"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/1_industry.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Manufacturing
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:rgb(79, 79, 79); margin-bottom:0px">
+                                    Control who accesses production orders, inventory and
+                                    supplier data with precise Odoo access control lists.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 2 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/2_retail.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Retail &amp;
+                                        E-commerce
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Manage sales staff visibility and restrict sensitive
+                                    customer and pricing data using Odoo user permissions.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 3 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/3_healthcare.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Healthcare
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Maintain strict confidentiality by limiting access to
+                                    patient records and workflows through role-based
+                                    access control in Odoo.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 4 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/4_finance.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Finance
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Secure financial records, transactions and reports
+                                    with advanced Odoo admin tools and custom permissions.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 5 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/5_education.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Education
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Define access levels for teachers, students and
+                                    administrators to manage academic data efficiently.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 6 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/6_realestate.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Real Estate
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Ensure agents only access their assigned leads and
+                                    property records with dynamic Odoo user access rights
+                                    settings.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 7 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/7_logistics.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Logistics &amp;
+                                        Supply Chain
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Manage who can view, update or approve shipping data
+                                    and vendor contracts.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 8 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/8_hospital.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Hospitality
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Define access for front desk, housekeeping and
+                                    management staff to streamline hotel operations.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 9 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1" src="./assets/images/industries_details/9_legal_complaince.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Legal &amp;
+                                        Compliance
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Restrict case files and internal communication with
+                                    tight Odoo access management settings.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 10 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center justify-content-center"
+                                         style="display:flex">
+                                        <img class="p-1"
+                                             src="./assets/images/industries_details/10_software_service.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        IT &amp; Software
+                                        Services
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Provide secure, project-based access to developers,
+                                    clients and QA teams.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 11 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3" style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div style="display:flex" class="d-flex align-items-center justify-content-center">
+                                        <img class="p-1" src="./assets/images/industries_details/11_hr.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Human
+                                        Resources
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Configure access levels for recruitment, payroll and
+                                    performance modules with ease.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 12 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div style="display:flex" class="d-flex align-items-center justify-content-center">
+                                        <img class="p-1" src="./assets/images/industries_details/12_government.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Government &amp;
+                                        Public Sector
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Safeguard citizen records and internal documentation
+                                    with layered Odoo role-based access control.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 13 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div style="display:flex" class="d-flex align-items-center justify-content-center">
+                                        <img class="p-1" src="./assets/images/industries_details/13_construction.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Construction
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Safeguard citizen records and internal documentation
+                                    with layered Odoo role-based access control.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 14 -->
+                        <div class="col-xl-3 h-100 col-lg-6 col-12 mt-3"
+                             style="min-height:110px">
+                            <div class="d-flex flex-column gap-3 p-3"
+                                 style="border:1px solid rgb(229, 231, 235); border-radius:15px;">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div style="display:flex" class="d-flex align-items-center justify-content-center">
+                                        <img class="p-1"
+                                             src="./assets/images/industries_details/14_fleet_management.svg"
+                                             width="56"
+                                             height="56"
+                                             loading="lazy"
+                                             alt="">
+                                    </div>
+                                    <div style="font-weight:600; font-size:18px; color:rgb(23, 22, 24)">
+                                        Fleet Management
+                                    </div>
+                                </div>
+                                <p style="display: none; font-weight:500; font-size:16px; color:#5c5f6e; margin-bottom:0px">
+                                    Safeguard citizen records and internal documentation
+                                    with layered Odoo role-based access control.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- OUR SERVICES -->
+<div class="sks-counter-section container-fluid py-md-5">
+    <div class="sks_center text-center mb-5">
+        <h2 class="text-center" style="font-size: 2.3rem; font-weight: 700; color: black;">Our <span>Services</span>
+        </h2>
+        <img src="./assets/images/others/heading.png" alt="heading">
+    </div>
+    <div>
+        <div class="row my-3">
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com" target="_blank"
+                                                                  style="text-decoration:none">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#ff0bdd4a;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/12_outsourcing.svg" class="w-100 h-100" alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#ff0bdd;font-weight:bold">Outsourcing and Dedicated Team
+                        Services</p></a></div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#e0d7ff;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/1_odoo_implementation.png" class="w-100 h-100" alt="info">
+                    </div>
+                    <p class="mb-0" style="font-size:18px;color:#604eaf;font-weight:bold">Odoo Implementation</p></a>
+                </div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#ffcee2;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/2_odoo_customization.png" class="w-100 h-100" alt="info">
+                    </div>
+                    <p class="mb-0" style="font-size:18px;color:#c5648c;font-weight:bold">Odoo Customization</p></a>
+                </div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#dfe8b4;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/4_mobileapp.png" class="w-100 h-100" alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#97a362;font-weight:bold">Mobile Apps</p></a></div>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#b5e6e1d1;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/5_migration_service.png" class="w-100 h-100" alt="info">
+                    </div>
+                    <p class="mb-0" style="font-size:18px;color:#32b2a7;font-weight:bold">Migration service</p></a>
+                </div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#D2EBFF;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/6_third_party_app_integration.png" class="w-100 h-100"
+                             alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#2175ffcc;font-weight:bold">Third Party App
+                        Integration</p></a></div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#eaddca;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/7_odoo_training.png" class="w-100 h-100" alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#9a651efa;font-weight:bold">Odoo Training</p></a></div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#9c27b04a;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/8_integration.svg" class="w-100 h-100" alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#9c27b0;font-weight:bold">Odoo Integration</p></a></div>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#4caf504a;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/9_consultancy.svg" class="w-100 h-100" alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#4caf50;font-weight:bold">Odoo Consultancy</p></a></div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#9e9e9e4a;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/10_license.svg" class="w-100 h-100" alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#9e9e9e;font-weight:bold">Odoo Licensing</p></a></div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com" target="_blank"
+                                                                  style="text-decoration:none">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#00bcd44a;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/11_hire.svg" class="w-100 h-100" alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#00bcd4;font-weight:bold">Hire Odoo Developer</p></a>
+                </div>
+            </div>
+            <div class="col-md-3 text-center card-group">
+                <div class="box p-4 shadow rounded mb-2 w-100"><a href="mailto:info@srikeshinfotech.com"
+                                                                  style="text-decoration:none" target="_blank">
+                    <div class="icon_img mb-2"
+                         style="margin:auto;background-color:#d7dceedb;border-radius:50%;width:60px;height:60px;padding:10px">
+                        <img src="./assets/images/services/3_odoo_support_maintenance.png" class="w-100 h-100"
+                             alt="info"></div>
+                    <p class="mb-0" style="font-size:18px;color:#7881a4;font-weight:bold">Support &amp; Maintenance</p>
+                </a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--LATEST APPS-->
+<div class="sks-products-section container-fluid py-md-5">
+    <div class="highlights-section">
+        <div class="sks_center text-center mb-5">
+            <h2 class="text-center"
+                style="font-size: 2.3rem;font-weight: 700;color: black;">
+                Latest
+                <span>Apps</span>
+            </h2>
+            <img src="./assets/images/others/heading.png"
+                 alt="heading">
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <a href="https://apps.odoo.com/apps/modules/17.0/skit_order_multi_search">
+                    <div class="highlight-card h-100 p-4"
+                         style="background-color: white; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                        <div class="card-image"
+                             style="border: 2px solid #71639e1c; margin-bottom: 1rem; border-radius: 10px; overflow: hidden;">
+                            <img src="./assets/our_products/Multi_Search_Banner.gif"
+                                 alt=""
+                                 style="width: 100%;border-radius: 10px;">
+                        </div>
+                        <h3 class="card-title"
+                            style="font-size: 20px;font-weight: 600;color: black;letter-spacing: -0.025em;">
+                            Order Multi Search
+                        </h3>
+                        <p class="card-description"
+                           style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                            Search multiple Sales and Purchase Orders in Odoo at once using references.
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://apps.odoo.com/apps/modules/18.0/skit_advance_payment">
+                    <div class="highlight-card h-100 p-4"
+                         style="background-color: white; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                        <div class="card-image"
+                             style="border: 2px solid #71639e1c; margin-bottom: 1rem; border-radius: 10px; overflow: hidden;">
+                            <img src="./assets/our_products/advance_payment.png"
+                                 alt=""
+                                 style="width: 100%;border-radius: 10px;">
+                        </div>
+                        <h3 class="card-title"
+                            style="font-size: 20px;font-weight: 600;color: black;letter-spacing: -0.025em;">
+                            Advance Payment
+                        </h3>
+                        <p class="card-description"
+                           style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                            Seamless advance payment registration for SO & PO
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://apps.odoo.com/apps/modules/19.0/skit_website_product_stock">
+                    <div class="highlight-card h-100 p-4"
+                         style="background-color: white; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                        <div class="card-image"
+                             style="border: 2px solid #71639e1c; margin-bottom: 1rem; border-radius: 10px; overflow: hidden;">
+                            <img src="./assets/our_products/website_product_stock.png"
+                                 alt=""
+                                 style="width: 100%;border-radius: 10px;">
+                        </div>
+                        <h3 class="card-title"
+                            style="font-size: 20px;font-weight: 600;color: black;letter-spacing: -0.025em;">
+                            Website Product Stock
+                        </h3>
+                        <p class="card-description"
+                           style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                            Show stock, prevent out-of-stock orders
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MOST DEMANDED APPS-->
+<div class="sks-products-section container-fluid py-md-5">
+    <div class="highlights-section">
+        <div class="sks_center text-center mb-5">
+            <h2 class="text-center"
+                style="font-size: 2.3rem;font-weight: 700;color: black;">
+                Most
+                <span>Demanded Apps</span>
+            </h2>
+            <img src="./assets/images/others/heading.png"
+                 alt="heading">
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <a href="https://apps.odoo.com/apps/modules/19.0/skit_pos_cache">
+                    <div class="highlight-card h-100 p-4"
+                         style="background-color: white; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                        <div class="card-image"
+                             style="border: 2px solid #71639e1c; margin-bottom: 1rem; border-radius: 10px; overflow: hidden;">
+                            <img src="./assets/our_products/skit_pos_quick_load.png"
+                                 alt=""
+                                 style="width: 100%;border-radius: 10px;">
+                        </div>
+                        <h3 class="card-title"
+                            style="font-size: 20px;font-weight: 600;color: black;letter-spacing: -0.025em;">
+                            POS Quick Load - Product
+                        </h3>
+                        <p class="card-description"
+                           style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                            Synchronization of POS product data
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://apps.odoo.com/apps/modules/19.0/skit_pay_later">
+                    <div class="highlight-card h-100 p-4"
+                         style="background-color: white; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                        <div class="card-image"
+                             style="border: 2px solid #71639e1c; margin-bottom: 1rem; border-radius: 10px; overflow: hidden;">
+                            <img src="./assets/our_products/skit_pay_later.png"
+                                 alt=""
+                                 style="width: 100%;border-radius: 10px;">
+                        </div>
+                        <h3 class="card-title"
+                            style="font-size: 20px;font-weight: 600;color: black;letter-spacing: -0.025em;">
+                            Pay Later in POS
+                        </h3>
+                        <p class="card-description"
+                           style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                            Offer flexible Pay Later options for Point Of Sale
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4 mb-4">
+                <a href="https://apps.odoo.com/apps/modules/19.0/skit_customer_code">
+                    <div class="highlight-card h-100 p-4"
+                         style="background-color: white; backdrop-filter: blur(20px); border-radius: 10px; padding: 32px; border: 2px solid #71639e1a; position: relative; overflow: hidden;">
+                        <div class="card-image"
+                             style="border: 2px solid #71639e1c; margin-bottom: 1rem; border-radius: 10px; overflow: hidden;">
+                            <img src="./assets/our_products/Customer_Sequence%20_Code.png"
+                                 alt=""
+                                 style="width: 100%;border-radius: 10px;">
+                        </div>
+                        <h3 class="card-title"
+                            style="font-size: 20px;font-weight: 600;color: black;letter-spacing: -0.025em;">
+                            Customer Sequence Code
+                        </h3>
+                        <p class="card-description"
+                           style="font-size: 16px;color: #000000; font-weight: 400;margin-bottom: 0;line-height: 1.6;">
+                            This Module automates the creation of unique identifiers for new customers or vendors.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--FAQ-->
+<div class="sks-support-section container-fluid pt-md-5">
+    <div class="highlights-section">
+        <div class="sks_center text-center">
+            <h2 class="text-center"
+                style="font-size: 2.3rem;font-weight: 700;color: black;">
+                <span>FAQ</span>
+            </h2>
+            <img src="./assets/images/others/heading.png"
+                 alt="heading">
+        </div>
+        <p class="mb-4 text-center" style="font-size: 20px;color: #000000; font-weight: 400;">
+            Frequently Asked Question
+        </p>
+    </div>
+</div>
+
+<section class="oe_container px-2">
+    <div style="max-width:1000px; margin:0 auto" class="mt32">
+
+        <div class="mb-3" style="border:1px solid #e5e7eb; border-radius:14px">
+            <a data-bs-toggle="collapse" href="#faq1"
+               class="d-flex justify-content-between align-items-center collapsed"
+               style="padding:18px 22px; font-size:18px; font-weight:500; color:#111827; text-decoration:none">
+                <span>1. Can I generate the report for all products or just specific ones?</span>
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div id="faq1" class="collapse">
+                <div style="padding:20px; border-top:1px solid #e5e7eb">
+                    Yes. You can run the report for all products, all categories or filter it down to specific products
+                    or specific categories — whichever fits your need.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3" style="border:1px solid #e5e7eb; border-radius:14px">
+            <a data-bs-toggle="collapse" href="#faq2"
+               class="d-flex justify-content-between align-items-center"
+               style="padding:18px 22px; font-size:18px; font-weight:500; color:#111827; text-decoration:none">
+                <span>2. In which formats can I export the report?</span>
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div id="faq2" class="collapse">
+                <div style="padding:20px; border-top:1px solid #e5e7eb">
+                    The report can be exported as a print-ready PDF or a styled Excel (XLSX) file - both downloadable in
+                    a single click directly from the wizard.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3" style="border:1px solid #e5e7eb; border-radius:14px">
+            <a data-bs-toggle="collapse" href="#faq3"
+               class="d-flex justify-content-between align-items-center"
+               style="padding:18px 22px; font-size:18px; font-weight:500; color:#111827; text-decoration:none">
+                <span>3. Can I group the report by category instead of by product?</span>
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div id="faq3" class="collapse">
+                <div style="padding:20px; border-top:1px solid #e5e7eb">
+                    Yes. You can choose to group the report by Product or by Category.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3" style="border:1px solid #e5e7eb; border-radius:14px">
+            <a data-bs-toggle="collapse" href="#faq4"
+               class="d-flex justify-content-between align-items-center"
+               style="padding:18px 22px; font-size:18px; font-weight:500; color:#111827; text-decoration:none">
+                <span>4. What columns are included in the report?</span>
+                <i class="fa fa-chevron-down"></i>
+            </a>
+            <div id="faq4" class="collapse">
+                <div style="padding:20px; border-top:1px solid #e5e7eb">
+                    Each report includes 8 columns: Date, Reference, Customer / Vendor, Opening Stock, Inbound /
+                    Purchase, Outbound / Sales, Damage and Closing Stock - giving you the full picture of every stock
+                    movement.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FREE SUPPORT -->
+<div class="sks-support-section container-fluid pt-md-5">
+    <div class="highlights-section">
+        <div class="sks_center text-center">
+            <h2 class="text-center" style="font-size: 2.3rem; font-weight: 700; color: black;">Free <span>Support</span>
+            </h2>
+            <img src="./assets/images/others/heading.png" alt="heading">
+        </div>
+        <p class="mb-4 text-center" style="font-size: 20px; color: #6b7280;">You will get 90 Days free support in case
+            any bugs or issue</p>
+    </div>
+</div>
+
+<div class="sks-support-section container-fluid pb-md-5">
+    <div class="col-md-12 col-12 text-center text-white"
+         style="background-color: #0d0d6d; border-radius: 20px; border-style: solid; border-width: thin;">
+        <div class="row py-4 text-left">
+            <div class="col-lg-8 col-12 my-auto">
+                <div class="oe_span12">
+                    <p class="card-description mb-3 text-center"
+                       style="font-size: 16px; color: #ffffff; line-height: 2rem;">Srikesh Infotech is an India based
+                        software company that focuses on highly qualitative, timely delivered and cost-effective
+                        offshore software development. We have 18+ years of technical and functional experience in ERP
+                        Customization and Implementation.</p>
+                    <p class="card-description mb-3 text-center"
+                       style="font-size: 16px; color: #ffffff; line-height: 2rem;">Please note that You're not allowed
+                        to distribute this module after purchase! In case of any question regarding this module feel
+                        free to email us on <b><a
+                                href="mailto:info@srikeshinfotech.com">info@srikeshinfotech.com</a></b> or raise a
+                        ticket on support.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <img class="img-fluid mx-auto mb-2" src="./assets/images/support/sks_support.svg" loading="lazy"
+                     alt="support-free-">
+            </div>
+        </div>
+        <div class="py-4 px-5"
+             style="background-color: #5b3fda; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+            <div class="justify-content-evenly align-items-center d-flex" style="gap:15px; flex-wrap: wrap;">
+                <!--SUPPORT EMAIL-->
+                <a href="mailto:"
+                   class="contact-btn email-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 200px;justify-content: center;background-color: #d25020">
+                    <img src="./assets/images/contact_us/mail.png"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">Email Us
+                    </span>
+                </a>
+                <!--SUPPORT WHATSAPP-->
+                <a href="https://wa.me/7538824350"
+                   class="contact-btn whatsapp-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 150px;justify-content: center;background-color: #25d366;">
+                    <img src="./assets/images/contact_us/whatsapp.png"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">+91 75388 24350
+                    </span>
+                </a>
+                <!-- SUPPORT WEBSITE -->
+                <a href="https://srikeshinfotech.com/"
+                   class="contact-btn email-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 200px;justify-content: center;background-color: #0a70d0">
+                    <img src="./assets/images/contact_us/website_icon_white.svg"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">www.srikeshinfotech.com
+                    </span>
+                </a>
+                <!--SUPPORT YOUTUBE-->
+                <a href="https://www.youtube.com/@srikeshinfotech/videos"
+                   class="contact-btn email-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 200px;justify-content: center;background-color: #ff0033">
+                    <img src="./assets/images/module_details/play.png"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">YouTube Videos
+                    </span>
+                </a>
+                <!--SUPPORT YOUTUBE-->
+                <a href="https://apps.odoo.com/apps/modules/browse?author=Srikesh%20Infotech"
+                   class="contact-btn email-btn d-flex align-items-center gap-2 justify-content-center"
+                   style="position: relative;padding: 15px 25px;border: none;border-radius: 50px;font-size: 16px;font-weight: 600;text-decoration: none;color: white;cursor: pointer;min-width: 200px;justify-content: center;background-color: gray">
+                    <img src="./assets/images/module_details/apps.svg"
+                         alt=""
+                         width="25"
+                         height="25">
+                    <span class="btn-text"
+                          style="font-size: 15px;letter-spacing: 0.5px;">Explore Our Apps
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
